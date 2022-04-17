@@ -720,7 +720,7 @@ li.menu-item .nav-label.sale-label::before{
 	background: transparent;
 }
 .header-style-1 .primary-nav-section{
-	background: #444444;
+	background: #54bf4b;
 }
 .primary{
 	position: relative;
@@ -732,22 +732,23 @@ li.menu-item .nav-label.sale-label::before{
 }
 .primary .menu-item.home-icon i{
 	font-size: 19px;
-	color: #ffffff;
+	color: #fff;
 }
 .primary .menu-item.home-icon>a{
 	padding: 10px 20px;
 }
 .primary>.menu-item:not(.home-icon)>a{
 	font-weight: 700;
-	color: #f1f1f1;
+	color: #fff;
 	text-transform: uppercase;
 	padding: 11px 23px;
 }
 .primary>.menu-item:not(first-child){
-	border-right: 1px solid #555555;
+	border-right: 1px solid #54bf4b;
 }
 .primary>.menu-item:not(.home-icon):hover{
-	background: #555555;
+	background: #357f2d;
+    transition: .5s;
 }
 .primary .menu-item>a:focus,
 .primary .menu-item>a:active,
@@ -2190,6 +2191,7 @@ li.menu-item .nav-label.sale-label::before{
 }
 .coppy-right-box {
     background: #2d2d2d;
+    margin-top: 50px
 }
 .coppy-right-box .coppy-right-item{
     display: inline-block;
