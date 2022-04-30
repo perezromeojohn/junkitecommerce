@@ -50,3 +50,14 @@ Just like shopee or whatever
 - Update cart quantity
 - Delete cart items (can also delete all items in the cart)
 
+### v1.5 BULK UPDATE - May 1, 2022
+- Logo changes from Junk-It to Greenworks (Justin Kirk Nacor's Change)
+- New system name:  Greenworks
+- Added item per page
+- Added sorting (low price, high price)
+- Category section functional
+- Search Bar with drop down category is functional
+- Keyword searching is functional
+- Added Admin category page
+- Migration Refresh to fix missing columns
+

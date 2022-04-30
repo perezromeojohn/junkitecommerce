@@ -63,14 +63,14 @@
                     <div class="advance-info">
                         <div class="tab-control normal">
                             <a href="#description" class="tab-control-item active">description</a>
-                            <a href="#add_infomation" class="tab-control-item">Addtional Infomation</a>
-                            <a href="#review" class="tab-control-item">Reviews</a>
+                            {{-- <a href="#add_infomation" class="tab-control-item">Addtional Infomation</a>
+                            <a href="#review" class="tab-control-item">Reviews</a> --}}
                         </div>
                         <div class="tab-contents">
                             <div class="tab-content-item active" id="description">
                                 {{$product->description}}
                             </div>
-                            <div class="tab-content-item " id="add_infomation">
+                            {{--<div class="tab-content-item " id="add_infomation">
                                 <table class="shop_attributes">
                                     <tbody>
                                         <tr>
@@ -160,7 +160,7 @@
                                     </div><!-- #review_form_wrapper -->
 
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

@@ -7,10 +7,10 @@
                 <div class="item-slide">
                     <img src="{{ asset('assets/images/main-slider-1-1.jpg') }}" alt="" class="img-slide">
                     <div class="slide-info slide-1">
-                        <h2 class="f-title">GOODAMNG <b>FURNITURES BOY</b></h2>
+                        <h2 class="f-title">RESELL USED <b>FURNITURES BOY</b></h2>
                         <span class="subtitle">We sell flabbergasted furnitures fuckerino!</span>
                         <p class="sale-info">for: <span class="price">ONE MILYON</span></p>
-                        <a href="#" class="btn-link">BILI KA NA PRE PLS</a>
+                        <a href="/shop" class="btn-link">Check Here!</a>
                     </div>
                 </div>
                 <div class="item-slide">
