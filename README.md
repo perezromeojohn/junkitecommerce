@@ -18,7 +18,6 @@
 [awesome]: https://awesome.re/badge.svg
 [stars-url]: https://github.com/perezromeojohn/junkitecommerce
 
-
 ## About Greenworks (Formerly known as Junk-It)
 
 Greenwork is an E-commerce type of web application with the sole purpose of buying and selling unwanted things at your home such as tables,
