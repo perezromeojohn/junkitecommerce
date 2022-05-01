@@ -1,12 +1,19 @@
-<p align="center"><img src="public\assets\images\logo-top-3.png" width="700" height="100%"></p>
+<p align="center">
+    <img src="public\assets\images\logo-top-3.png" width="700" height="100%">
+    <br>
+    ![](https://img.shields.io/badge/made%20by%3A-JSON--Derulo-important)
+</p>
 
-## About Junk-It
+## About Greenworks (Formerly known as Junk-It)
 
-Junk-It is a furniture buy and sell E-Commerce system
+Greenwork is an E-commerce type of web application with the sole purpose of buying and selling unwanted things at your home such as tables,
+chairs, shoes, or even shirts for you to earn some quick cash instead of throwing it away. The transactions can be via Cash on Delivery or
+Online Transactions.
 
 ## Features
 
-Just like shopee or whatever
+- Users can buy and sell products
+- Online transactions or via Cash on delivery
 
 ## Group Members
 
