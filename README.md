@@ -1,8 +1,22 @@
 <p align="center">
     <img src="public\assets\images\logo-top-3.png" width="700" height="100%">
     <br>
-    ![](https://img.shields.io/badge/made%20by%3A-JSON--Derulo-important)
 </p>
+
+<h1 align="center">
+    
+  [![made-by][made-by]][made-url]
+  [![coverage][coverage]][forks-url]
+  [![awesome][awesome]][stars-url]
+    
+</h1>
+
+[made-by]: https://img.shields.io/badge/made%20by%3A-JSON--Derulo-important
+[made-url]: https://github.com/perezromeojohn/junkitecommerce
+[coverage]: https://img.shields.io/badge/progress-40%25-yellowgreen
+[forks-url]: https://github.com/perezromeojohn/junkitecommerce
+[awesome]: https://awesome.re/badge.svg
+[stars-url]: https://github.com/perezromeojohn/junkitecommerce
 
 ## About Greenworks (Formerly known as Junk-It)
 
