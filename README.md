@@ -60,4 +60,6 @@ Just like shopee or whatever
 - Keyword searching is functional
 - Added Admin category page
 - Migration Refresh to fix missing columns
+- Added a Category Page for admin
+- CRUD of Category Page now working (Create, Read, Update, Delete)
 
