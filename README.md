@@ -1,8 +1,6 @@
 <p align="center">
     <img src="public\assets\images\logo-top-3.png" width="700" height="100%">
-    <br>
 </p>
-
 <h1 align="center">
     
   [![made-by][made-by]][made-url]
