@@ -1,11 +1,20 @@
 <main id="main" class="main-site">
-
+    <style>
+        .regularprice {
+            font-weight: 300px;
+            font-siz: 13px !important;
+            color: #aaaaaa;
+            text-decoration: line-through;
+            padding-left: 10px;
+        }
+    </style>
     <div class="container">
 
         <div class="wrap-breadcrumb">
             <ul>
                 <li class="item-link"><a href="/" class="link">home</a></li>
                 <li class="item-link"><span>detail</span></li>
+                <li class="item-link"><span><b>{{$product->name}}</b></span></li>
             </ul>
         </div>
         <div class="row">
@@ -17,7 +26,7 @@
                           <ul class="slides">
 
                             <li data-thumb="{{ asset('assets/images/products') }}/{{$product->image}}">
-                                <img src="{{ asset('assets/images/products') }}/{{$product->image}}" alt="/{{$product->name}}" />
+                                <img style="width: 470px; height: 470px; object-fit: cover" src="{{ asset('assets/images/products') }}/{{$product->image}}" alt="/{{$product->name}}" />
                             </li>
 
                           </ul>
@@ -39,7 +48,12 @@
                         <div class="wrap-social">
                             <a class="link-socail" href="#"><img src="{{ asset('assets/images/social-list.png') }}" alt=""></a>
                         </div>
-                        <div class="wrap-price"><span class="product-price">₱ {{$product->regular_price}}</span></div>
+                        @if($product->sale_price > 0)
+                            <div class="wrap-price"><span class="product-price">₱ {{$product->sale_price}}</span></div>
+                            <del><span class="product-price regularprice">₱ {{$product->regular_price}}</span></del>
+                        @else
+                            <div class="wrap-price"><span class="product-price">₱ {{$product->regular_price}}</span></div>
+                        @endif
                         <div class="stock-info in-stock">
                             <p class="availability">Availability: <b>{{$product->stock_status}}</b></p>
                         </div>
@@ -62,105 +76,12 @@
                     </div>
                     <div class="advance-info">
                         <div class="tab-control normal">
-                            <a href="#description" class="tab-control-item active">description</a>
-                            {{-- <a href="#add_infomation" class="tab-control-item">Addtional Infomation</a>
-                            <a href="#review" class="tab-control-item">Reviews</a> --}}
+                            <a href="#description" class="tab-control-item active">Description</a>
                         </div>
                         <div class="tab-contents">
                             <div class="tab-content-item active" id="description">
                                 {{$product->description}}
                             </div>
-                            {{--<div class="tab-content-item " id="add_infomation">
-                                <table class="shop_attributes">
-                                    <tbody>
-                                        <tr>
-                                            <th>Weight</th><td class="product_weight">1 kg</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Dimensions</th><td class="product_dimensions">12 x 15 x 23 cm</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Color</th><td><p>Black, Blue, Grey, Violet, Yellow</p></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="tab-content-item " id="review">
-                                
-                                <div class="wrap-review-form">
-                                    
-                                    <div id="comments">
-                                        <h2 class="woocommerce-Reviews-title">01 review for <span>Radiant-360 R6 Chainsaw Omnidirectional [Orage]</span></h2>
-                                        <ol class="commentlist">
-                                            <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1" id="li-comment-20">
-                                                <div id="comment-20" class="comment_container"> 
-                                                    <img alt="" src="assets/images/author-avata.jpg" height="80" width="80">
-                                                    <div class="comment-text">
-                                                        <div class="star-rating">
-                                                            <span class="width-80-percent">Rated <strong class="rating">5</strong> out of 5</span>
-                                                        </div>
-                                                        <p class="meta"> 
-                                                            <strong class="woocommerce-review__author">admin</strong> 
-                                                            <span class="woocommerce-review__dash">–</span>
-                                                            <time class="woocommerce-review__published-date" datetime="2008-02-14 20:00" >Tue, Aug 15,  2017</time>
-                                                        </p>
-                                                        <div class="description">
-                                                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ol>
-                                    </div><!-- #comments -->
-
-                                    <div id="review_form_wrapper">
-                                        <div id="review_form">
-                                            <div id="respond" class="comment-respond"> 
-
-                                                <form action="#" method="post" id="commentform" class="comment-form" novalidate="">
-                                                    <p class="comment-notes">
-                                                        <span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span>
-                                                    </p>
-                                                    <div class="comment-form-rating">
-                                                        <span>Your rating</span>
-                                                        <p class="stars">
-                                                            
-                                                            <label for="rated-1"></label>
-                                                            <input type="radio" id="rated-1" name="rating" value="1">
-                                                            <label for="rated-2"></label>
-                                                            <input type="radio" id="rated-2" name="rating" value="2">
-                                                            <label for="rated-3"></label>
-                                                            <input type="radio" id="rated-3" name="rating" value="3">
-                                                            <label for="rated-4"></label>
-                                                            <input type="radio" id="rated-4" name="rating" value="4">
-                                                            <label for="rated-5"></label>
-                                                            <input type="radio" id="rated-5" name="rating" value="5" checked="checked">
-                                                        </p>
-                                                    </div>
-                                                    <p class="comment-form-author">
-                                                        <label for="author">Name <span class="required">*</span></label> 
-                                                        <input id="author" name="author" type="text" value="">
-                                                    </p>
-                                                    <p class="comment-form-email">
-                                                        <label for="email">Email <span class="required">*</span></label> 
-                                                        <input id="email" name="email" type="email" value="" >
-                                                    </p>
-                                                    <p class="comment-form-comment">
-                                                        <label for="comment">Your review <span class="required">*</span>
-                                                        </label>
-                                                        <textarea id="comment" name="comment" cols="45" rows="8"></textarea>
-                                                    </p>
-                                                    <p class="form-submit">
-                                                        <input name="submit" type="submit" id="submit" class="submit" value="Submit">
-                                                    </p>
-                                                </form>
-
-                                            </div><!-- .comment-respond-->
-                                        </div><!-- #review_form -->
-                                    </div><!-- #review_form_wrapper -->
-
-                                </div>
-                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -241,7 +162,7 @@
                             <div class="product product-style-2 equal-elem ">
                                 <div class="product-thumnail">
                                     <a href="{{route('product.details',['slug'=>$r_product->slug])}}" title="{{$r_product->name}}">
-                                        <figure><img src="{{ asset('assets/images/products/') }}\{{$r_product->image}}" width="214" height="214" alt="{{$r_product->name}}"></figure>
+                                        <figure><img style="width:214px; height:214px; object-fit: cover" src="{{ asset('assets/images/products/') }}\{{$r_product->image}}" alt="{{$r_product->name}}"></figure>
                                     </a>
                                     <div class="group-flash">
                                         <span class="flash-item new-label">new</span>

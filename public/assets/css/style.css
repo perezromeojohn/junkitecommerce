@@ -30,7 +30,7 @@ Primary use:    Ecommerce
 /*------------------------------------------------------------------
 [Color codes]
 
-    Option Color 1 : #54bf4b;
+    Option Color 1 : #36a57c;
 
     Option Color 2 : #365db5;
 
@@ -356,8 +356,7 @@ input,textarea{
 .topbar-menu-area{
 	display: block;
 	width: 100%;
-	background: #f9f9f9;
-	border-bottom: 1px solid #f2f2f2;
+	background: #36a57c;
 }
 .topbar-menu-area .topbar-menu{
 	display: block;
@@ -385,7 +384,12 @@ input,textarea{
 	padding-left: 17px;
 	padding-right: 0;
 }
-
+.topbar-menu-area .topbar-menu ul li #MyAccount:hover {
+	color: #fff; 
+}
+.topbar-menu-area .topbar-menu ul li #MyAccount{
+	color: #fff;
+}
 .topbar-menu-area .topbar-menu ul li a{
 	display: inline-block;
 	text-decoration: none;
@@ -461,7 +465,7 @@ input,textarea{
 	display: inline-block;
 	border: 2px solid;
 	position: relative;
-	max-width: 522px;
+	max-width: 622px;
 	width: 100%;
 }
 .header.fill-color .center-section .wrap-search-form{
@@ -696,11 +700,11 @@ li.menu-item .nav-label.new-label::before{
 }
 
 li.menu-item .nav-label.sale-label{
-	background: #54bf4b;
+	background: #36a57c;
 }
 li.menu-item .nav-label.sale-label::before{
-	border-top-color: #54bf4b;
-	border-left-color: #54bf4b;
+	border-top-color: #36a57c;
+	border-left-color: #36a57c;
 }
 
 .header-nav-section li:not(:last-child)::after{
@@ -720,7 +724,7 @@ li.menu-item .nav-label.sale-label::before{
 	background: transparent;
 }
 .header-style-1 .primary-nav-section{
-	background: #54bf4b;
+	background: #36a57c;
 }
 .primary{
 	position: relative;
@@ -744,10 +748,10 @@ li.menu-item .nav-label.sale-label::before{
 	padding: 11px 23px;
 }
 .primary>.menu-item:not(first-child){
-	border-right: 1px solid #54bf4b;
+	border-right: 1px solid #36a57c;
 }
 .primary>.menu-item:not(.home-icon):hover{
-	background: #357f2d;
+	background: #23787e;
     transition: .5s;
 }
 .primary .menu-item>a:focus,
@@ -1059,7 +1063,7 @@ li.menu-item .nav-label.sale-label::before{
 }
 .wrap-main-slide .slide-1 .sale-info .price{
     font-weight: 700;
-    color: #54bf4b;
+    color: #36a57c;
     font-size: 24px;
 }
 .wrap-main-slide .slide-3 .btn-link,
@@ -1081,7 +1085,7 @@ li.menu-item .nav-label.sale-label::before{
 .wrap-main-slide .slide-2 .f-title{
     font-size: 40px;
     line-height: 35px;
-    color: #54bf4b;
+    color: #36a57c;
     font-weight: 700;
     display: inline-block;
     text-transform: uppercase;
@@ -1156,7 +1160,7 @@ li.menu-item .nav-label.sale-label::before{
 .wrap-main-slide .slide-3 .sale-info .price{
     font-weight: 700;
     font-size: 25px;
-    color: #54bf4b;
+    color: #36a57c;
 }
 
 /* main slide's animate */
@@ -1590,7 +1594,7 @@ li.menu-item .nav-label.sale-label::before{
     width: 100%;
     /*float: left;*/
     text-align: left;
-    background-color: #54bf4b;
+    background-color: #36a57c;
     font-size: 14px;
     text-transform: uppercase;
     font-weight: 700;
@@ -1772,12 +1776,12 @@ li.menu-item .nav-label.sale-label::before{
     border-left-color: #365db5;
 }
 .product .product-thumnail .group-flash .flash-item.sale-label{
-    background-color: #54bf4b;
+    background-color: #36a57c;
     margin-left: 8px;
 }
 .product .product-thumnail .group-flash .flash-item.sale-label::before{
-    border-top-color: #54bf4b;
-    border-left-color: #54bf4b;
+    border-top-color: #36a57c;
+    border-left-color: #36a57c;
 }
 .product .product-info .product-name span,
 .product-style-2 .product-info .product-name span{
@@ -1846,7 +1850,7 @@ li.menu-item .nav-label.sale-label::before{
 .product .product-info .wrap-price ins>p,
 .product-style-2 .product-info .wrap-price ins>p{
     font-weight: 600;
-    color: #54bf4b;
+    color: #36a57c;
     text-align: left;
     padding-right: 8px;
 }
@@ -2190,13 +2194,12 @@ li.menu-item .nav-label.sale-label::before{
     -ms-transform: translateY(8.5px);
 }
 .coppy-right-box {
-    background: #2d2d2d;
+    background: #36a57c;
     margin-top: 50px
 }
 .coppy-right-box .coppy-right-item{
     display: inline-block;
     float: left;
-    padding: 12px 0;
 }
 .coppy-right-box .coppy-right-item.item-right{
     float: right;
@@ -2204,7 +2207,7 @@ li.menu-item .nav-label.sale-label::before{
 .coppy-right-box .coppy-right-text{
     font-size: 13px;
     line-height: 20px;
-    color: #aaaaaa;
+    color: #fff;
     margin: 0;
     padding: 0;
 }
@@ -2745,7 +2748,7 @@ li.menu-item .nav-label.sale-label::before{
 .ui-slider-horizontal .ui-slider-handle {
     top: -5px;
     margin-left: 0;
-    background-color: #54bf4b;
+    background-color: #36a57c;
 }
 .ui-slider-horizontal .ui-slider-range {
     top: 0;
@@ -2868,7 +2871,7 @@ vertical-align: top;
     border-radius: 50%;
 }
 .product-list-style .product-attribute li .attr-red-color{
-    background-color: #54bf4b;
+    background-color: #36a57c;
 }
 .product-list-style .product-attribute li .attr-yellow-color{
     background-color: #ecbf33;
@@ -2927,7 +2930,7 @@ vertical-align: top;
 }
 .product-list-style .advance-info .wrap-price ins>p{
     font-weight: 600;
-    color: #54bf4b;
+    color: #36a57c;
     text-align: left;
     padding-right: 8px;
 }
@@ -3187,7 +3190,7 @@ vertical-align: top;
     font-weight: 400;
 }
 .wrap-contacts .contact-box label>span{
-    color: #54bf4b;
+    color: #36a57c;
     margin: 0;
     padding: 0;
 }
@@ -4091,7 +4094,7 @@ article.single-post blockquote p:last-child::after{
     outline: none;
 }
 .wrap-iten-in-cart .products-cart .delete a.btn:hover i{
-    color: #54bf4b;
+    color: #36a57c;
 }
 .shopping-cart .summary{
     display: inline-block;
@@ -4490,7 +4493,7 @@ article.single-post blockquote p:last-child::after{
 }
 .wrap-product-detail .detail-info .wrap-price ins>p{
     font-weight: 600;
-    color: #54bf4b;
+    color: #36a57c;
     text-align: left;
     padding-right: 8px;
 }
@@ -4508,7 +4511,7 @@ article.single-post blockquote p:last-child::after{
     text-align: left;
 }
 .wrap-product-detail .detail-info .stock-info.in-stock b{
-    color: #54bf4b;
+    color: #36a57c;
 }
 .wrap-product-detail .advance-info .tab-control,
 .wrap-product-detail .advance-info .tab-contents{
@@ -4845,7 +4848,7 @@ table.shop_attributes tbody{
     text-transform: uppercase;
 }
 .wrap-address-billing .row-in-form label span{
-    color: #54bf4b;
+    color: #36a57c;
 }
 .wrap-address-billing .row-in-form input[type=email],
 .wrap-address-billing .row-in-form input[type=text],
@@ -5596,7 +5599,7 @@ table.shop_attributes tbody{
 }
 .wrap-footer-item .wrap-hotline-footer .phone-number,
 .topbar-menu-area .topbar-menu .label-before.fa-mobile{
-    color: #54bf4b !important;
+    color: #36a57c !important;
 }
 .fill-color .header-nav-section ul li a{
     color: #ffffff;
@@ -7136,7 +7139,7 @@ background-color: #888888;
 }
 
 .btn-submitx {
-	background: #54bf4b;
+	background: #36a57c;
 	font-size: 17px;
 	color: #ffffff;
 	line-height: 19px;
@@ -7183,7 +7186,7 @@ background-color: #888888;
 .bg-white {
     color: white;
     margin: 2px;
-    background-color: #54bf4b !important;
+    background-color: #36a57c !important;
     font: 14px bold, "ARIAL";
 }
 

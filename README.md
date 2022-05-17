@@ -82,3 +82,18 @@ Online Transactions.
 - Added a Category Page for admin
 - CRUD of Category Page now working (Create, Read, Update, Delete)
 
+### v1.6 BULKIER UPDATE - May 6 - May (num), 2022
+- Added admin product page
+- CRUD of Product page now working for admin
+- Added dynamic slider for homepage
+- Added admin slider page
+- Able to change pictures and data to the page
+- Can now edit and delete home page slider
+- Added home page slider links
+- Added admin home page slider links
+- Added dynamic latest products for homepage
+- Added dynamic category products for homepage
+- Added on sale products for home page
+- Added less than 100 pesos product carousel for homepage
+- Added price filter slider for shop page and search page
+

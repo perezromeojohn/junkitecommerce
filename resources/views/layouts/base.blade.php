@@ -16,6 +16,9 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chosen.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/color-01.css')}}">
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.css" integrity="sha512-KRrxEp/6rgIme11XXeYvYRYY/x6XPGwk0RsIC6PyMRc072vj2tcjBzFmn939xzjeDhj0aDO7TDMd7Rbz3OEuBQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @livewireStyles
 </head>
 <body class="home-page home-01 ">
@@ -31,52 +34,37 @@
 	<!--header-->
 	<header id="header" class="header header-style-1">
 		<div class="container-fluid">
-			<div class="row">
+			<div class="row" style="background-image: repeating-linear-gradient(45deg, #23787e 0, #23787e 1px, transparent 0, transparent 50%);
+			background-size: 23px 23px;
+			background-color: #ffffff;">
 				<div class="topbar-menu-area">
 					<div class="container">
 						<div class="topbar-menu left-menu">
 							<ul>
-								{{-- <li class="menu-item" >
-									<a title="Hotline: (+123) 456 789" href="#" ><span class="icon label-before fa fa-mobile"></span>Hotline: (+123) 456 789</a>
-								</li> --}}
 							</ul>
 						</div>
 						<div class="topbar-menu right-menu">
 							<ul>
-								{{-- <li class="menu-item lang-menu menu-item-has-children parent">
-									<a title="English" href="#"><span class="img label-before"><img src="assets/images/lang-en.png" alt="lang-en"></span>English<i class="fa fa-angle-down" aria-hidden="true"></i></a>
-									<ul class="submenu lang" >
-										<li class="menu-item" ><a title="hungary" href="#"><span class="img label-before"><img src="assets/images/lang-hun.png" alt="lang-hun"></span>Hungary</a></li>
-										<li class="menu-item" ><a title="german" href="#"><span class="img label-before"><img src="assets/images/lang-ger.png" alt="lang-ger" ></span>German</a></li>
-										<li class="menu-item" ><a title="french" href="#"><span class="img label-before"><img src="assets/images/lang-fra.png" alt="lang-fre"></span>French</a></li>
-										<li class="menu-item" ><a title="canada" href="#"><span class="img label-before"><img src="assets/images/lang-can.png" alt="lang-can"></span>Canada</a></li>
-									</ul>
-								</li>
-								<li class="menu-item menu-item-has-children parent" >
-									<a title="Dollar (USD)" href="#">Dollar (USD)<i class="fa fa-angle-down" aria-hidden="true"></i></a>
-									<ul class="submenu curency" >
-										<li class="menu-item" >
-											<a title="Pound (GBP)" href="#">Pound (GBP)</a>
-										</li>
-										<li class="menu-item" >
-											<a title="Euro (EUR)" href="#">Euro (EUR)</a>
-										</li>
-										<li class="menu-item" >
-											<a title="Dollar (USD)" href="#">Dollar (USD)</a>
-										</li>
-									</ul>
-								</li> --}}
 								@if(Route::has('login'))
 									@auth
 										@if(Auth::user()->utype === 'ADM')
 											<li class="menu-item menu-item-has-children parent" >
-												<a title="My Account" href="#">My Account ({{Auth::user()->name}})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+												<a title="MyAccount" id="MyAccount" href="#">My Account ({{Auth::user()->name}})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 												<ul class="submenu curency" >
 													<li class="menu-item" >
 														<a title="Admin Dashboard" href="{{ route('admin.dashboard') }}">Dashboard</a>
 													</li>
 													<li class="menu-item">
 														<a title="Categories" href="{{route('admin.categories')}}">Categories</a>
+													</li>
+													<li class="menu-item">
+														<a title="Products" href="{{route('admin.products')}}">Products</a>
+													</li>
+													<li class="menu-item">
+														<a title="Manage Home Slider" href="{{route('admin.homeslider')}}">Home Slider</a>
+													</li>
+													<li class="menu-item">
+														<a title="Manage Category Products" href="{{route('admin.homecategories')}}">Manage Category Products</a>
 													</li>
 													<li class="menu-item">
 														<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
@@ -88,7 +76,7 @@
 											</li>
 										@else
 											<li class="menu-item menu-item-has-children parent" >
-												<a title="My Account" href="#">My Account ({{Auth::user()->name}})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+												<a id="MyAccount" title="My Account" href="#">My Account ({{Auth::user()->name}})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 												<ul class="submenu curency" >
 													<li class="menu-item" >
 														<a title="User Dashboard" href="{{ route('user.dashboard') }}">Dashboard</a>
@@ -103,8 +91,8 @@
 											</li>
 										@endif
 									@else
-										<li class="menu-item" ><a title="Register or Login" href="{{route('login')}}">Login</a></li>
-										<li class="menu-item" ><a title="Register or Login" href="{{route('register')}}">Register</a></li>
+										<li class="menu-item" ><a id="MyAccount" title="Register or Login" href="{{route('login')}}">Login</a></li>
+										<li class="menu-item" ><a id="MyAccount"  title="Register or Login" href="{{route('register')}}">Register</a></li>
 									@endif
 								@endif
 							</ul>
@@ -124,7 +112,7 @@
 						<div class="wrap-icon right-section">
 							<div class="wrap-icon-section wishlist">
 								<a href="#" class="link-direction">
-									<i class="fa fa-heart" aria-hidden="true"></i>
+									<i class="fa fa-heart" style="color: #36a57c" aria-hidden="true"></i>
 									<div class="left-info">
 										<span class="index">0 item</span>
 										<span class="title">Wishlist</span>
@@ -132,11 +120,14 @@
 								</a>
 							</div>
 							<div class="wrap-icon-section minicart">
-								<a href="#" class="link-direction">
-									<i class="fa fa-shopping-basket" aria-hidden="true"></i>
+								<a href="/cart" class="link-direction">
+									<i class="fa fa-shopping-basket" style="color: #36a57c" aria-hidden="true"></i>
 									<div class="left-info">
 										@if(Cart::count()>0)
 										<span class="index">{{Cart::count()}} items</span>
+										@endif
+										@if(Cart::count()==0)
+										<span class="index">no items</span>
 										@endif
 										<span class="title">CART</span>
 									</div>
@@ -172,9 +163,7 @@
 								<li class="menu-item">
 									<a href="/checkout" class="link-term mercado-item-title">Checkout</a>
 								</li>
-								<li class="menu-item">
-									<a href="contact-us.html" class="link-term mercado-item-title">Contact Us</a>
-								</li>																	
++
 							</ul>
 						</div>
 					</div>
@@ -317,119 +306,26 @@
 							</div>
 						</div>
 					</div>
-
-					{{-- <div class="row">
-
-						<div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-							<div class="wrap-footer-item">
-								<h3 class="item-header">We Using Safe Payments:</h3>
-								<div class="item-content">
-									<div class="wrap-list-item wrap-gallery">
-										<img src="assets/images/payment.png" style="max-width: 260px;">
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-							<div class="wrap-footer-item">
-								<h3 class="item-header">Social network</h3>
-								<div class="item-content">
-									<div class="wrap-list-item social-network">
-										<ul>
-											<li><a href="#" class="link-to-item" title="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-											<li><a href="#" class="link-to-item" title="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-											<li><a href="#" class="link-to-item" title="pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-											<li><a href="#" class="link-to-item" title="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-											<li><a href="#" class="link-to-item" title="vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-							<div class="wrap-footer-item">
-								<h3 class="item-header">Dowload App</h3>
-								<div class="item-content">
-									<div class="wrap-list-item apps-list">
-										<ul>
-											<li><a href="#" class="link-to-item" title="our application on apple store"><figure><img src="assets/images/brands/apple-store.png" alt="apple store" width="128" height="36"></figure></a></li>
-											<li><a href="#" class="link-to-item" title="our application on google play store"><figure><img src="assets/images/brands/google-play-store.png" alt="google play store" width="128" height="36"></figure></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-					</div> --}}
 				</div>
-
-				{{-- <div class="wrap-back-link">
-					<div class="container">
-						<div class="back-link-box">
-							<h3 class="backlink-title">Quick Links</h3>
-							<div class="back-link-row">
-								<ul class="list-back-link" >
-									<li><span class="row-title">Mobiles:</span></li>
-									<li><a href="#" class="redirect-back-link" title="mobile">Mobiles</a></li>
-									<li><a href="#" class="redirect-back-link" title="yphones">YPhones</a></li>
-									<li><a href="#" class="redirect-back-link" title="Gianee Mobiles GL">Gianee Mobiles GL</a></li>
-									<li><a href="#" class="redirect-back-link" title="Mobiles Karbonn">Mobiles Karbonn</a></li>
-									<li><a href="#" class="redirect-back-link" title="Mobiles Viva">Mobiles Viva</a></li>
-									<li><a href="#" class="redirect-back-link" title="Mobiles Intex">Mobiles Intex</a></li>
-									<li><a href="#" class="redirect-back-link" title="Mobiles Micrumex">Mobiles Micrumex</a></li>
-									<li><a href="#" class="redirect-back-link" title="Mobiles Bsus">Mobiles Bsus</a></li>
-									<li><a href="#" class="redirect-back-link" title="Mobiles Samsyng">Mobiles Samsyng</a></li>
-									<li><a href="#" class="redirect-back-link" title="Mobiles Lenova">Mobiles Lenova</a></li>
-								</ul>
-
-								<ul class="list-back-link" >
-									<li><span class="row-title">Tablets:</span></li>
-									<li><a href="#" class="redirect-back-link" title="Plesc YPads">Plesc YPads</a></li>
-									<li><a href="#" class="redirect-back-link" title="Samsyng Tablets" >Samsyng Tablets</a></li>
-									<li><a href="#" class="redirect-back-link" title="Qindows Tablets" >Qindows Tablets</a></li>
-									<li><a href="#" class="redirect-back-link" title="Calling Tablets" >Calling Tablets</a></li>
-									<li><a href="#" class="redirect-back-link" title="Micrumex Tablets" >Micrumex Tablets</a></li>
-									<li><a href="#" class="redirect-back-link" title="Lenova Tablets Bsus" >Lenova Tablets Bsus</a></li>
-									<li><a href="#" class="redirect-back-link" title="Tablets iBall" >Tablets iBall</a></li>
-									<li><a href="#" class="redirect-back-link" title="Tablets Swipe" >Tablets Swipe</a></li>
-									<li><a href="#" class="redirect-back-link" title="Tablets TVs, Audio" >Tablets TVs, Audio</a></li>
-								</ul>
-
-								<ul class="list-back-link" >
-									<li><span class="row-title">Fashion:</span></li>
-									<li><a href="#" class="redirect-back-link" title="Sarees Silk" >Sarees Silk</a></li>
-									<li><a href="#" class="redirect-back-link" title="sarees Salwar" >sarees Salwar</a></li>
-									<li><a href="#" class="redirect-back-link" title="Suits Lehengas" >Suits Lehengas</a></li>
-									<li><a href="#" class="redirect-back-link" title="Biba Jewellery" >Biba Jewellery</a></li>
-									<li><a href="#" class="redirect-back-link" title="Rings Earrings" >Rings Earrings</a></li>
-									<li><a href="#" class="redirect-back-link" title="Diamond Rings" >Diamond Rings</a></li>
-									<li><a href="#" class="redirect-back-link" title="Loose Diamond Shoes" >Loose Diamond Shoes</a></li>
-									<li><a href="#" class="redirect-back-link" title="BootsMen Watches" >BootsMen Watches</a></li>
-									<li><a href="#" class="redirect-back-link" title="Women Watches" >Women Watches</a></li>
-								</ul>
-
-							</div>
-						</div>
-					</div>
-				</div> --}}
-
 			</div>
 
 			<div class="coppy-right-box">
 				<div class="container">
-					<div class="coppy-right-item item-left">
-						<p class="coppy-right-text">JSON Derulo</p>
-					</div>
-					<div class="coppy-right-item item-right">
-						<div class="wrap-nav horizontal-nav">
-							<ul>
-								<li class="menu-item"><a href="about-us.html" class="link-term">About us</a></li>								
-								<li class="menu-item"><a href="privacy-policy.html" class="link-term">Privacy Policy</a></li>
-								<li class="menu-item"><a href="terms-conditions.html" class="link-term">Terms & Conditions</a></li>
-								<li class="menu-item"><a href="return-policy.html" class="link-term">Return Policy</a></li>								
-							</ul>
+					<div class="container">
+						<div class="container-fluid" id="sect3">
+							<div class="row">
+								<div class="col-lg-4" id="leftsection">
+									<img src="{{ asset('assets/images/mechanisms.gif') }}" id="contactmecha" draggable="false" class="img-responsive center-block d-block mx-auto" alt="MOTIVATE!!!!">
+								</div>
+								<div class="col-sm-8" id="rightsection" style="color:#fff">
+									<h1><b>Contact Us</b></h1>
+									<p>Report Account Problems: 201911621@gordoncollege.edu.ph</p>
+									<p>Report a Bug : report a bug guild or girhub</p>
+									<p>General Questions about the Site : 201911621@gordoncollege.edu.ph</p>
+									<h6>if Rumyooo aint available</h6>
+									<h6>call Larry the Lobster for more Info</h6>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="clearfix"></div>
@@ -438,15 +334,20 @@
 		</div>
 	</footer>
 	
+	
 	<script src="{{ asset('assets/js/jquery-1.12.4.minb8ff.js?ver=1.12.4') }}"></script>
 	<script src="{{ asset('assets/js/jquery-ui-1.12.4.minb8ff.js?ver=1.12.4') }}"></script>
 	<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('assets/js/jquery.flexslider.js') }}"></script>
-	{{-- <script src="{{ asset('assets/js/chosen.jquery.min.js') }}"></script> --}}
 	<script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
 	<script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
 	<script src="{{ asset('assets/js/jquery.sticky.js') }}"></script>
 	<script src="{{ asset('assets/js/functions.js') }}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js" integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @livewireScripts
+
+	@stack('scripts')
 </body>
 </html>

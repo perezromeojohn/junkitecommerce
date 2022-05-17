@@ -62,7 +62,7 @@
                             <div class="product product-style-3 equal-elem ">
                                 <div class="product-thumnail">
                                     <a href="{{route('product.details',['slug'=>$product->slug])}}" title="{{ $product->name }}">
-                                        <figure><img src="{{ asset('assets/images/products') }}/{{ $product->image }}" alt="{{ $product->name }}"></figure>
+                                        <figure><img style="width: 220px; height: 220px; object-fit: cover" src="{{ asset('assets/images/products') }}/{{ $product->image }}" alt="{{ $product->name }}"></figure>
                                     </a>
                                 </div>
                                 <div class="product-info">
@@ -79,13 +79,6 @@
 
                 <div class="wrap-pagination-info">
                     {{ $products->links() }}
-                    {{-- <ul class="page-numbers">
-                        <li><span class="page-number-item current" >1</span></li>
-                        <li><a class="page-number-item" href="#" >2</a></li>
-                        <li><a class="page-number-item" href="#" >3</a></li>
-                        <li><a class="page-number-item next-link" href="#" >Next</a></li>
-                    </ul>
-                    <p class="result-count">Showing 1-8 of 12 result</p> --}}
                 </div>
             </div><!--end main products area-->
 
@@ -123,14 +116,9 @@
                 </div><!-- brand widget-->
 
                 <div class="widget mercado-widget filter-widget price-filter">
-                    <h2 class="widget-title">Price</h2>
-                    <div class="widget-content">
-                        <div id="slider-range"></div>
-                        <p>
-                            <label for="amount">Price:</label>
-                            <input type="text" id="amount" readonly>
-                            <button class="filter-submit">Filter</button>
-                        </p>
+                    <h2 class="widget-title">Price <span class="text-info">₱{{$min_price}} - ₱{{$max_price}}</span></h2>
+                    <div class="widget-content" style="padding: 10px 5px 40px 5px;">
+                        <div id="sliders" wire:ignore></div>
                     </div>
                 </div><!-- Price-->
 
@@ -234,3 +222,29 @@
     </div><!--end container-->
 
 </main>
+
+@push('scripts')
+    <script>
+        var slider = document.getElementById('sliders');
+        noUiSlider.create(slider, {
+            start: [1, 1000],
+            connect: true,
+            steps: 1,
+            decimals: 0,
+            range: {
+                'min' : 1,
+                'max' : 1000
+            },
+            pips: {
+                mode: 'steps',
+                stepped: true,
+                density: 4
+            }
+        });
+
+        slider.noUiSlider.on('update', function( value ) {
+            @this.set('min_price',value[0]);
+            @this.set('max_price',value[1]);
+        });
+    </script>
+@endpush
