@@ -37,6 +37,7 @@
                                     <th>Price</th>
                                     <th>Sale Price</th>
                                     <th>Category</th>
+                                    <th>Condition</th>
                                     <th>Date</th>
                                     <th>Action</th>
                                 </tr>
@@ -51,10 +52,11 @@
                                         <td>{{$product->regular_price}}</td>
                                         <td>{{$product->sale_price}}</td>
                                         <td>{{$product->category->name}}</td>
+                                        <td>{{$product->condition}}</td>
                                         <td>{{$product->created_at}}</td>
                                         <td>
                                             <a href="{{route('admin.editproduct',['product_slug'=>$product->slug])}}"><i style="color: green;" class="fa fa-pencil fa-2x"></i></a>
-                                            <a href="#" wire:click.prevent="deleteProduct({{$product->id}})"><i style="margin-left: 10px;" class="fa fa-trash fa-2x text-danger"></i></a>
+                                            <a href="#" onclick="confirm('Delete the Product?') || event.stopImmediatePropagation()" wire:click.prevent="deleteProduct({{$product->id}})"><i style="margin-left: 10px;" class="fa fa-trash fa-2x text-danger"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

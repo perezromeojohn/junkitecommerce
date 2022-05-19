@@ -16,6 +16,9 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chosen.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/color-01.css')}}">
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.css" integrity="sha512-KRrxEp/6rgIme11XXeYvYRYY/x6XPGwk0RsIC6PyMRc072vj2tcjBzFmn939xzjeDhj0aDO7TDMd7Rbz3OEuBQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @livewireStyles
 </head>
 <body class="home-page home-01 ">
@@ -31,12 +34,13 @@
 	<!--header-->
 	<header id="header" class="header header-style-1">
 		<div class="container-fluid">
-			<div class="row">
+			<div class="row" style="background-image: repeating-linear-gradient(45deg, #23787e 0, #23787e 1px, transparent 0, transparent 50%);
+			background-size: 23px 23px;
+			background-color: #ffffff;">
 				<div class="topbar-menu-area">
 					<div class="container">
 						<div class="topbar-menu left-menu">
 							<ul>
-
 							</ul>
 						</div>
 						<div class="topbar-menu right-menu">
@@ -45,10 +49,22 @@
 									@auth
 										@if(Auth::user()->utype === 'ADM')
 											<li class="menu-item menu-item-has-children parent" >
-												<a title="My Account" href="#">My Account ({{Auth::user()->name}})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+												<a title="MyAccount" id="MyAccount" href="#">My Account ({{Auth::user()->name}})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 												<ul class="submenu curency" >
 													<li class="menu-item" >
 														<a title="Admin Dashboard" href="{{ route('admin.dashboard') }}">Dashboard</a>
+													</li>
+													<li class="menu-item">
+														<a title="Categories" href="{{route('admin.categories')}}">Categories</a>
+													</li>
+													<li class="menu-item">
+														<a title="Products" href="{{route('admin.products')}}">Products</a>
+													</li>
+													<li class="menu-item">
+														<a title="Manage Home Slider" href="{{route('admin.homeslider')}}">Home Slider</a>
+													</li>
+													<li class="menu-item">
+														<a title="Manage Category Products" href="{{route('admin.homecategories')}}">Manage Category Products</a>
 													</li>
 													<li class="menu-item">
 														<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
@@ -60,7 +76,7 @@
 											</li>
 										@else
 											<li class="menu-item menu-item-has-children parent" >
-												<a title="My Account" href="#">My Account ({{Auth::user()->name}})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+												<a id="MyAccount" title="My Account" href="#">My Account ({{Auth::user()->name}})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 												<ul class="submenu curency" >
 													<li class="menu-item" >
 														<a title="User Dashboard" href="{{ route('user.dashboard') }}">Dashboard</a>
@@ -75,8 +91,8 @@
 											</li>
 										@endif
 									@else
-										<li class="menu-item" ><a title="Register or Login" href="{{route('login')}}">Login</a></li>
-										<li class="menu-item" ><a title="Register or Login" href="{{route('register')}}">Register</a></li>
+										<li class="menu-item" ><a id="MyAccount" title="Register or Login" href="{{route('login')}}">Login</a></li>
+										<li class="menu-item" ><a id="MyAccount"  title="Register or Login" href="{{route('register')}}">Register</a></li>
 									@endif
 								@endif
 							</ul>
@@ -91,42 +107,12 @@
 							<a href="/" class="link-to-home"><img src="{{ asset('assets/images/logo-top-1.png') }}" alt="mercado"></a>
 						</div>
 
-						<div class="wrap-search center-section">
-							<div class="wrap-search-form">
-								<form action="#" id="form-search-top" name="form-search-top">
-									<input type="text" name="search" value="" placeholder="Search Here...">
-									<button form="form-search-top" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-									<div class="wrap-list-cate">
-										<input type="hidden" name="product-cate" value="0" id="product-cate">
-										<a href="#" class="link-control">All Category</a>
-										<ul class="list-cate">
-											<li class="level-0">All Category</li>
-											<li class="level-1">-Electronics</li>
-											<li class="level-2">Batteries & Chargens</li>
-											<li class="level-2">Headphone & Headsets</li>
-											<li class="level-2">Mp3 Player & Acessories</li>
-											<li class="level-1">-Smartphone & Table</li>
-											<li class="level-2">Batteries & Chargens</li>
-											<li class="level-2">Mp3 Player & Headphones</li>
-											<li class="level-2">Table & Accessories</li>
-											<li class="level-1">-Electronics</li>
-											<li class="level-2">Batteries & Chargens</li>
-											<li class="level-2">Headphone & Headsets</li>
-											<li class="level-2">Mp3 Player & Acessories</li>
-											<li class="level-1">-Smartphone & Table</li>
-											<li class="level-2">Batteries & Chargens</li>
-											<li class="level-2">Mp3 Player & Headphones</li>
-											<li class="level-2">Table & Accessories</li>
-										</ul>
-									</div>
-								</form>
-							</div>
-						</div>
+						@livewire('header-search-component')
 
 						<div class="wrap-icon right-section">
 							<div class="wrap-icon-section wishlist">
 								<a href="#" class="link-direction">
-									<i class="fa fa-heart" aria-hidden="true"></i>
+									<i class="fa fa-heart" style="color: #36a57c" aria-hidden="true"></i>
 									<div class="left-info">
 										<span class="index">0 item</span>
 										<span class="title">Wishlist</span>
@@ -134,11 +120,14 @@
 								</a>
 							</div>
 							<div class="wrap-icon-section minicart">
-								<a href="#" class="link-direction">
-									<i class="fa fa-shopping-basket" aria-hidden="true"></i>
+								<a href="/cart" class="link-direction">
+									<i class="fa fa-shopping-basket" style="color: #36a57c" aria-hidden="true"></i>
 									<div class="left-info">
 										@if(Cart::count()>0)
 										<span class="index">{{Cart::count()}} items</span>
+										@endif
+										@if(Cart::count()==0)
+										<span class="index">no items</span>
 										@endif
 										<span class="title">CART</span>
 									</div>
@@ -174,9 +163,7 @@
 								<li class="menu-item">
 									<a href="/checkout" class="link-term mercado-item-title">Checkout</a>
 								</li>
-								<li class="menu-item">
-									<a href="contact-us.html" class="link-term mercado-item-title">Contact Us</a>
-								</li>																	
++
 							</ul>
 						</div>
 					</div>
@@ -324,17 +311,21 @@
 
 			<div class="coppy-right-box">
 				<div class="container">
-					<div class="coppy-right-item item-left">
-						<p class="coppy-right-text">JSON Derulo</p>
-					</div>
-					<div class="coppy-right-item item-right">
-						<div class="wrap-nav horizontal-nav">
-							<ul>
-								<li class="menu-item"><a href="about-us.html" class="link-term">About us</a></li>								
-								<li class="menu-item"><a href="privacy-policy.html" class="link-term">Privacy Policy</a></li>
-								<li class="menu-item"><a href="terms-conditions.html" class="link-term">Terms & Conditions</a></li>
-								<li class="menu-item"><a href="return-policy.html" class="link-term">Return Policy</a></li>								
-							</ul>
+					<div class="container">
+						<div class="container-fluid" id="sect3">
+							<div class="row">
+								<div class="col-lg-4" id="leftsection">
+									<img src="{{ asset('assets/images/mechanisms.gif') }}" id="contactmecha" draggable="false" class="img-responsive center-block d-block mx-auto" alt="MOTIVATE!!!!">
+								</div>
+								<div class="col-sm-8" id="rightsection" style="color:#fff">
+									<h1><b>Contact Us</b></h1>
+									<p>Report Account Problems: 201911621@gordoncollege.edu.ph</p>
+									<p>Report a Bug : report a bug guild or girhub</p>
+									<p>General Questions about the Site : 201911621@gordoncollege.edu.ph</p>
+									<h6>if Rumyooo aint available</h6>
+									<h6>call Larry the Lobster for more Info</h6>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="clearfix"></div>
@@ -343,15 +334,20 @@
 		</div>
 	</footer>
 	
+	
 	<script src="{{ asset('assets/js/jquery-1.12.4.minb8ff.js?ver=1.12.4') }}"></script>
 	<script src="{{ asset('assets/js/jquery-ui-1.12.4.minb8ff.js?ver=1.12.4') }}"></script>
 	<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('assets/js/jquery.flexslider.js') }}"></script>
-	<script src="{{ asset('assets/js/chosen.jquery.min.js') }}"></script>
 	<script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
 	<script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
 	<script src="{{ asset('assets/js/jquery.sticky.js') }}"></script>
 	<script src="{{ asset('assets/js/functions.js') }}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js" integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @livewireScripts
+
+	@stack('scripts')
 </body>
 </html>

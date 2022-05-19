@@ -35,13 +35,12 @@
         <!--On Sale-->
         @if($sproducts->count() > 0)
         <div class="wrap-show-advance-info-box style-1 has-countdown">
-            <h3 class="title-box">On Sale</h3>
             <div class="wrap-top-banner">
                 <div href="#" class="link-banner">
-                    <figure><img src="{{ asset('assets/images/on-sale-banner.jpg') }}" width="1170" height="240" alt=""></figure>
+                    <figure><img src="{{ asset('assets/images/sale-banner.jpg') }}" width="1170" height="240" alt=""></figure>
                 </div>
             </div>
-            <div class="wrap-countdown mercado-countdown" data-expire="2020/12/12 12:34:56"></div>
+            <div class="wrap-countdown mercado-countdown" data-expire="2022/5/24 12:34:56"></div>
             <div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container " data-items="5" data-loop="false" data-nav="true" data-dots="false" data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
                 @foreach ($sproducts as $sproduct)
                 <div class="product product-style-2 equal-elem ">
@@ -63,9 +62,37 @@
         </div>
         @endif
 
+        <!--Used Items-->
+        <div class="wrap-show-advance-info-box style-2 has-countdown">
+            <div class="wrap-top-banner">
+                <h3 class="title-box"></h3>
+                <div href="#" class="link-banner banner-effect-2">
+                    <figure><img src="{{ asset('assets/images/on-sale-banner.jpg') }}" width="1170" height="240" alt=""></figure>
+                </div>
+            </div>
+            <div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container " data-items="5" data-loop="false" data-nav="true" data-dots="false" data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
+                @foreach ($usedproducts as $usedproduct)
+                <div class="product product-style-2 equal-elem ">
+                    <div class="product-thumnail">
+                        <a href="{{route('product.details',['slug'=>$usedproduct->slug])}}" title="{{$usedproduct->name}}">
+                            <figure><img style="width: 220px; height: 220px; object-fit: cover" src="{{ asset('assets/images/products/') }}\{{$usedproduct->image}}" width="800" height="800" alt="{{$usedproduct->name}}"></figure>
+                        </a>
+                        <div class="group-flash">
+                            <span style="margin-top: 10px" class="flash-item sale-label">sale</span>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <a href="{{route('product.details',['slug'=>$usedproduct->slug])}}" class="product-name"><span>{{$usedproduct->name}}</span></a>
+                        <div class="wrap-price"><span class="product-price">₱{{$usedproduct->regular_price}}</span></div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+
         <!--Latest Products-->
         <div class="wrap-show-advance-info-box style-1">
-            <h3 class="title-box">Latest Products</h3>
+            <h3 class="title-box"></h3>
             <div class="wrap-top-banner">
                 <a href="#" class="link-banner banner-effect-2">
                     <figure><img src="{{ asset('assets/images/digital-electronic-banner.jpg') }}" width="1170" height="240" alt=""></figure>
@@ -101,9 +128,9 @@
 
         @if($lessthanproducts->count() > 0)
         <div class="wrap-show-advance-info-box style-1 has-countdown">
-            <h3 class="title-box">Items less than 100 pesos</h3>
+            <h3 class="title-box"></h3>
             <div class="wrap-top-banner">
-                <div href="#" class="link-banner">
+                <div href="#" class="link-banner banner-effect-2">
                     <figure><img src="{{ asset('assets/images/less-than.jpg') }}" width="1170" height="240" alt=""></figure>
                 </div>
             </div>
@@ -128,9 +155,23 @@
         </div>
         @endif
 
+        <!--BANNER-->
+        <div class="wrap-banner style-twin-default">
+            <div class="banner-item">
+                <a href="#" class="link-banner banner-effect-1">
+                    <figure><img src="{{ asset('assets/images/home-1-banner-1.jpg') }}" alt="" width="580" height="190"></figure>
+                </a>
+            </div>
+            <div class="banner-item">
+                <a href="#" class="link-banner banner-effect-1">
+                    <figure><img src="{{ asset('assets/images/home-1-banner-2.jpg') }}" alt="" width="580" height="190"></figure>
+                </a>
+            </div>
+        </div>
+
         <!--Product Categories-->
         <div class="wrap-show-advance-info-box style-1">
-            <h3 class="title-box">Product Categories</h3>
+            <h3 class="title-box"></h3>
             <div class="wrap-top-banner">
                 <a href="#" class="link-banner banner-effect-2">
                     <figure><img src="{{ asset('assets/images/fashion-accesories-banner.jpg') }}" width="1170" height="240" alt=""></figure>
@@ -173,6 +214,6 @@
                     </div>
                 </div>
             </div>
-        </div>		
+        </div>
     </div>
 </main>

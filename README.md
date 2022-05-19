@@ -96,4 +96,10 @@ Online Transactions.
 - Added on sale products for home page
 - Added less than 100 pesos product carousel for homepage
 - Added price filter slider for shop page and search page
+- Wishlist functions properly
+- Wishlist and Cart dynamically updates item count
+- Adjusted the layout of the cart page
+- Adjusted the layout of the wishlist page
+- New banners
+- Added dynamic quantity for product
 

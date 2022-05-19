@@ -48,10 +48,19 @@ Primary use:    Ecommerce
 
 -------------------------------------------------------------------*/
 
-
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #dddddd; 
+}
+::-webkit-scrollbar-thumb {
+    background: #23787e;
+    border-radius: 20px;
+}
 
 body{
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Poppins', sans-serif;
 	font-size: 13px;
 	color: #444444;
 	overflow-x: hidden;
@@ -1679,7 +1688,7 @@ li.menu-item .nav-label.sale-label::before{
     border: 1px solid #e6e6e6;
     padding: 9px 10px 9px 0;
     position: absolute;
-    top: 40px;
+    top: 0px;
     left: 0;
 }
 .wrap-show-advance-info-box>.wrap-countdown span{
@@ -1693,7 +1702,7 @@ li.menu-item .nav-label.sale-label::before{
     font-size: 20px;
     line-height: 17px;
     font-weight: 300;
-    color: #666666;
+    color: #23787e;
     margin-right: 10px;
     margin-left: 10px;
 }
@@ -1701,14 +1710,14 @@ li.menu-item .nav-label.sale-label::before{
     font-weight: 600;
     font-size: 18px;
     line-height: 17px;
-    color: #333333;
+    color: #36a57c;
 }
 .wrap-show-advance-info-box>.wrap-countdown::before{
     content: "\f017";
     font-family: FontAwesome;
     font-size: 24px;
     line-height: 21px;
-    color: #000000;
+    color: #36a57c;
     display: inline-block;
     float: left;
     margin-left: 19px;
@@ -5995,7 +6004,7 @@ background-color: #888888;
     filter: alpha(opacity=0);
     visibility: hidden;
     content: "view demo";
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
     text-align: center;
     font-size: 14px;
     color: #ffffff;

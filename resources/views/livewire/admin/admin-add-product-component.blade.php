@@ -90,6 +90,17 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="col-md-4 control-label">Used Item</label>
+                                <div class="col-md-4">
+                                    <select class="form-control" wire:model="condition">
+                                        <option>-- Select --</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class="col-md-4 control-label">Quantity</label>
                                 <div class="col-md-4">
                                     <input required type="text" placeholder="Quantity" class="form-control input-md" wire:model="quantity" />
@@ -99,7 +110,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Product Image</label>
                                 <div class="col-md-4">
-                                    <input required type="file" class="input-file" wire:model="image"/>
+                                    <input type="file" class="input-file" wire:model="image"/>
                                     @if($image)
                                     <img src="{{$image->temporaryUrl()}}" width="120" />
                                     @endif

@@ -15,10 +15,14 @@ class CategoryComponent extends Component
     public $pagesize;
     public $category_slug;
 
+    public $min_price, $max_price;
+
     public function mount($category_slug) {
         $this->sorting = "default";
         $this->pagesize = 12;
         $this->category_slug = $category_slug;
+        $this->min_price = 1;
+        $this->max_price = 1000;
     }
     public function store($product_id, $product_name, $product_price) {
         Cart::add($product_id, $product_name,1, $product_price)->associate('App\Models\Product');
@@ -42,9 +46,10 @@ class CategoryComponent extends Component
         } else {
             $products = Product::where('category_id', $category_id)->paginate($this->pagesize);
         }
-
         $categories = Category::all();
-        
-        return view('livewire.category-component', ['products'=> $products, 'categories'=> $categories, 'category_name'=> $category_name])->layout("layouts.base");
+        $featured_products = Product::where('featured','==',1)->inRandomOrder()->limit(4)->get();
+        $popular_products = Product::inRandomOrder()->limit(6)->get();
+
+        return view('livewire.category-component', ['products'=> $products,'featured_products'=>$featured_products,'popular_products'=>$popular_products,'categories'=>$categories])->layout("layouts.base");
     }
 }

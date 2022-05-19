@@ -21,6 +21,7 @@ class AdminAddProductComponent extends Component
     public $SKU;
     public $stock_status;
     public $featured;
+    public $condition;
     public $quantity;
     public $image;
     public $category_id;
@@ -46,6 +47,7 @@ class AdminAddProductComponent extends Component
         $product->SKU = $this->SKU;
         $product->stock_status = $this->stock_status;
         $product->featured = $this->featured;
+        $product->condition = $this->condition;
         $product->quantity = $this->quantity;
         $imageName = Carbon::now()->timestamp . '_' . $this->image->extension();
         $this->image->storeAs('products', $imageName);

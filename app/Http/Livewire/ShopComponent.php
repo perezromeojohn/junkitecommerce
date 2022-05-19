@@ -24,9 +24,24 @@ class ShopComponent extends Component
         $this->max_price = 1000;
     }
     public function store($product_id, $product_name, $product_price) {
-        Cart::add($product_id, $product_name,1, $product_price)->associate('App\Models\Product');
+        Cart::instance('cart')->add($product_id, $product_name,1, $product_price)->associate('App\Models\Product');
         session()->flash('success_message', 'Product added to cart successfully!');
         return redirect()->route('product.cart');
+    }
+
+    public function addToWishlist($product_id, $product_name, $product_price) {
+        Cart::instance('wishlist')->add($product_id, $product_name,1, $product_price)->associate('App\Models\Product');
+        $this->emitTo('wishlist-count-component', 'refreshComponent');
+    }
+
+    public function removeFromWishlist($product_id) {
+        foreach(Cart::instance('wishlist')->content() as $wishitems) {
+            if($wishitems->id == $product_id) {
+                Cart::instance('wishlist')->remove($wishitems->rowId);
+                $this->emitTo('wishlist-count-component', 'refreshComponent');
+                return;
+            }
+        }
     }
 
     use withPagination;
@@ -43,7 +58,9 @@ class ShopComponent extends Component
         }
 
         $categories = Category::all();
-        
-        return view('livewire.shop-component', ['products'=> $products, 'categories'=> $categories])->layout("layouts.base");
+        $featured_products = Product::where('featured','==',1)->inRandomOrder()->limit(4)->get();
+        $popular_products = Product::inRandomOrder()->limit(6)->get();
+
+        return view('livewire.shop-component', ['products'=> $products, 'categories'=> $categories,'featured_products'=>$featured_products,'popular_products'=>$popular_products])->layout("layouts.base");
     }
 }
