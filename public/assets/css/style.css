@@ -628,7 +628,7 @@ header.fill-color .main-info-area .right-section .wrap-icon-section.minicart .in
     font-size: 12px;
     line-height: 12px;
     display: block;
-    background: #888;
+    background: #ff5a00;
     padding: 1.5px 7px;
     border-radius: 2px;
 }
@@ -6318,7 +6318,7 @@ background-color: #888888;
     }
 }
 
-@media (max-width: 1024px){
+@media (min-width: 0px){
     .sticky-wrapper{
         height: 0 !important;
     }
@@ -6338,6 +6338,10 @@ background-color: #888888;
 	    text-align: center;
 	    margin-top: 25px;
 	    margin-bottom: 25px;
+	}
+	.header .main-info-area .left-section.wrap-logo-top img{
+		width: 70%; 
+	    order: 1;
 	}
 	.header .main-info-area .center-section{
 		width: 100%;
@@ -6375,10 +6379,6 @@ background-color: #888888;
     .custom-col-5,
     .custom-col-5-2{
         width: 100% !important;
-    }
-    .header-nav-section,
-    .primary-nav-section{
-        display: none;
     }
     .nav-section{
         display: none;
