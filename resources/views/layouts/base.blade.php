@@ -114,6 +114,13 @@
 						<div class="wrap-icon right-section">
 							@livewire('wishlist-count-component')
 							@livewire('cart-count-component')
+							<div class="wrap-icon-section show-up-after-1024">
+								<a href="/cart" class="mobile-navigation">
+									<span></span>
+									<span></span>
+									<span></span>
+								</a>
+							</div>
 						</div>
 
 					</div>
@@ -122,8 +129,8 @@
 					<div class="primary-nav-section">
 						<div class="container">
 							<ul class="nav primary clone-main-menu" id="mercado_main" data-menuname="Main menu" >
-								<li class="menu-item">
-									<a href="/" class="link-term mercado-item-title">Home</i></a>
+								<li class="menu-item home-icon">
+									<a href="/" class="link-term mercado-item-title"><i class="fa fa-home" aria-hidden="true"></i></a>
 								</li>
 								<li class="menu-item">
 									<a href="about-us.html" class="link-term mercado-item-title">About Us</a>
@@ -132,7 +139,7 @@
 									<a href="/shop" class="link-term mercado-item-title">Shop</a>
 								</li>
 								<li class="menu-item">
-									<a href="{{route('product.cart')}}" class="link-term mercado-item-title">Cart</a>
+									<a href="/cart" class="link-term mercado-item-title">Cart</a>
 								</li>
 								<li class="menu-item">
 									<a href="/checkout" class="link-term mercado-item-title">Checkout</a>
