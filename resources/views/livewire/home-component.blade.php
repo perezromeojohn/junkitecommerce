@@ -1,5 +1,41 @@
 <main id="main">
-    <div class="container">
+    <div class="container" style="padding-top: 30px">
+
+         <!--On Sale-->
+         @if($sproducts->count() > 0 && $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now() )
+         <div class="wrap-show-advance-info-box style-1 has-countdown">
+             <div class="wrap-top-banner">
+                 <div href="#" class="link-banner">
+                     <figure><img src="{{ asset('assets/images/sale-banner.jpg') }}" width="1170" height="240" alt=""></figure>
+                 </div>
+             </div>
+             <div class="wrap-countdown mercado-countdown" data-expire="{{Carbon\Carbon::parse($sale->sale_date)->format('Y/m/d h:m:s')}}"></div>
+             <div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container " data-items="5" data-loop="false" data-nav="true" data-dots="false" data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
+                 @foreach ($sproducts as $sproduct)
+                 <div class="product product-style-2 equal-elem ">
+                     <div class="product-thumnail">
+                         <a href="{{route('product.details',['slug'=>$sproduct->slug])}}" title="{{$sproduct->name}}">
+                             <figure><img style="width: 220px; height: 220px; object-fit: cover" src="{{ asset('assets/images/products/') }}\{{$sproduct->image}}" width="800" height="800" alt="{{$sproduct->name}}"></figure>
+                         </a>
+                         <div class="group-flash">
+                             <span style="margin-top: 10px" class="flash-item sale-label">sale</span>
+                         </div>
+                     </div>
+                     <div class="product-info">
+                         <a href="{{route('product.details',['slug'=>$sproduct->slug])}}" class="product-name"><span>{{$sproduct->name}}</span></a>
+                         <div class="wrap-price"><ins><p class="product-price">${{$sproduct->sale_price}}</p></ins> <del><p class="product-price">${{$sproduct->regular_price}}</p></del></div>
+                     </div>
+                 </div>
+                 @endforeach
+             </div>
+         </div>
+         @else
+         <div class="wrap-top-banner">
+             <div href="#" class="link-banner">
+                 <figure><img src="{{ asset('assets/images/no-sale.jpg') }}" width="1170" height="240" alt=""></figure>
+             </div>
+         </div>
+         @endif
 
         <!--MAIN SLIDE-->
         <div class="wrap-main-slide">
@@ -8,7 +44,7 @@
                 <div class="item-slide">
                     <img src="{{ asset('assets/images/sliders')}}/{{$slider->image}}" alt="" style="width: 100%; height:420px; object-fit: cover;" class="img-slide">
                     <div class="slide-info slide-1">
-                        <h2 class="f-title"><b>{{$slider->title}}</b></h2>
+                        <h2 class="f-title" style="color: #323443;"><b>{{$slider->title}}</b></h2>
                         <span class="subtitle">{{$slider->subtitle}}</span>
                         <p class="sale-info">for as low as: <span class="price">{{$slider->price}}</span></p>
                         <a href="{{$slider->link}}" class="btn-link">Check Here!</a>
@@ -31,36 +67,6 @@
                 </a>
             </div>
         </div>
-
-        <!--On Sale-->
-        @if($sproducts->count() > 0)
-        <div class="wrap-show-advance-info-box style-1 has-countdown">
-            <div class="wrap-top-banner">
-                <div href="#" class="link-banner">
-                    <figure><img src="{{ asset('assets/images/sale-banner.jpg') }}" width="1170" height="240" alt=""></figure>
-                </div>
-            </div>
-            <div class="wrap-countdown mercado-countdown" data-expire="2022/5/24 12:34:56"></div>
-            <div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container " data-items="5" data-loop="false" data-nav="true" data-dots="false" data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
-                @foreach ($sproducts as $sproduct)
-                <div class="product product-style-2 equal-elem ">
-                    <div class="product-thumnail">
-                        <a href="{{route('product.details',['slug'=>$sproduct->slug])}}" title="{{$sproduct->name}}">
-                            <figure><img style="width: 220px; height: 220px; object-fit: cover" src="{{ asset('assets/images/products/') }}\{{$sproduct->image}}" width="800" height="800" alt="{{$sproduct->name}}"></figure>
-                        </a>
-                        <div class="group-flash">
-                            <span style="margin-top: 10px" class="flash-item sale-label">sale</span>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <a href="{{route('product.details',['slug'=>$sproduct->slug])}}" class="product-name"><span>{{$sproduct->name}}</span></a>
-                        <div class="wrap-price"><ins><p class="product-price">${{$sproduct->sale_price}}</p></ins> <del><p class="product-price">${{$sproduct->regular_price}}</p></del></div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-        @endif
 
         <!--Used Items-->
         <div class="wrap-show-advance-info-box style-2 has-countdown">

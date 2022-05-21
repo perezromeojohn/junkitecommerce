@@ -102,4 +102,6 @@ Online Transactions.
 - Adjusted the layout of the wishlist page
 - New banners
 - Added dynamic quantity for product
+- Added working time sale counter
+- Swapped branch from master to failsafe
 

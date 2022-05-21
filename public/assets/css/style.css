@@ -1053,14 +1053,14 @@ li.menu-item .nav-label.sale-label::before{
     margin-left: -2px;
 }
 .wrap-main-slide .slide-1 .f-title b{
-    color: #222222;
+    color: #323443;
     font-size: 45px;
-    font-weight: 700;
+    font-weight: 900;
 }
 .wrap-main-slide .slide-1 .subtitle{
     font-size: 18px;
-    line-height: 24px;
-    color: #555555;
+    line-height: 13px;
+    color: #323443;
     display: inline-block;
 }
 .wrap-main-slide .slide-1 .sale-info{
