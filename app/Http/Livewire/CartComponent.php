@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Cart;
+use Illuminate\Support\Facades\Auth;
 
 class CartComponent extends Component
 {
@@ -33,6 +34,15 @@ class CartComponent extends Component
         session()->flash('success_message', 'All products removed from cart successfully!');
         $this->emitTo('cart-count-component', 'refreshComponent');
     }
+
+    public function checkout() {
+        if(Auth::check()) {
+            return redirect()->route('checkout');
+        } else {
+            return redirect()->route('login');
+        }
+    }
+
 
     public function render()
     {
