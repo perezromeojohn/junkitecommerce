@@ -19,10 +19,6 @@
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 	
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.css" integrity="sha512-KRrxEp/6rgIme11XXeYvYRYY/x6XPGwk0RsIC6PyMRc072vj2tcjBzFmn939xzjeDhj0aDO7TDMd7Rbz3OEuBQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     @livewireStyles
 </head>
 <body class="home-page home-01 ">
@@ -38,7 +34,9 @@
 	<!--header-->
 	<header id="header" class="header header-style-1">
 		<div class="container-fluid">
-			<div class="row">
+			<div class="row" style="background-image: repeating-linear-gradient(45deg, #23787e 0, #23787e 1px, transparent 0, transparent 50%);
+			background-size: 23px 23px;
+			background-color: #ffffff;">
 				<div class="topbar-menu-area">
 					<div class="container">
 						<div class="topbar-menu left-menu">
@@ -112,8 +110,36 @@
 						@livewire('header-search-component')
 
 						<div class="wrap-icon right-section">
-							@livewire('wishlist-count-component')
-							@livewire('cart-count-component')
+							<div class="wrap-icon-section wishlist">
+								<a href="#" class="link-direction">
+									<i class="fa fa-heart" style="color: #36a57c" aria-hidden="true"></i>
+									<div class="left-info">
+										<span class="index">0 item</span>
+										<span class="title">Wishlist</span>
+									</div>
+								</a>
+							</div>
+							<div class="wrap-icon-section minicart">
+								<a href="/cart" class="link-direction">
+									<i class="fa fa-shopping-basket" style="color: #36a57c" aria-hidden="true"></i>
+									<div class="left-info">
+										@if(Cart::count()>0)
+										<span class="index">{{Cart::count()}} items</span>
+										@endif
+										@if(Cart::count()==0)
+										<span class="index">no items</span>
+										@endif
+										<span class="title">CART</span>
+									</div>
+								</a>
+							</div>
+							<div class="wrap-icon-section show-up-after-1024">
+								<a href="/cart" class="mobile-navigation">
+									<span></span>
+									<span></span>
+									<span></span>
+								</a>
+							</div>
 						</div>
 
 					</div>
@@ -122,8 +148,8 @@
 					<div class="primary-nav-section">
 						<div class="container">
 							<ul class="nav primary clone-main-menu" id="mercado_main" data-menuname="Main menu" >
-								<li class="menu-item">
-									<a href="/" class="link-term mercado-item-title">Home</i></a>
+								<li class="menu-item home-icon">
+									<a href="/" class="link-term mercado-item-title"><i class="fa fa-home" aria-hidden="true"></i></a>
 								</li>
 								<li class="menu-item">
 									<a href="about-us.html" class="link-term mercado-item-title">About Us</a>
@@ -132,7 +158,7 @@
 									<a href="/shop" class="link-term mercado-item-title">Shop</a>
 								</li>
 								<li class="menu-item">
-									<a href="{{route('product.cart')}}" class="link-term mercado-item-title">Cart</a>
+									<a href="/cart" class="link-term mercado-item-title">Cart</a>
 								</li>
 								<li class="menu-item">
 									<a href="/checkout" class="link-term mercado-item-title">Checkout</a>
