@@ -82,7 +82,7 @@ Online Transactions.
 - Added a Category Page for admin
 - CRUD of Category Page now working (Create, Read, Update, Delete)
 
-### v1.6 BULKIER UPDATE - May 6 - May (num), 2022
+### v1.6 BULKIER UPDATE - May 6 - May 23, 2022
 - Added admin product page
 - CRUD of Product page now working for admin
 - Added dynamic slider for homepage
@@ -104,4 +104,5 @@ Online Transactions.
 - Added dynamic quantity for product
 - Added working time sale counter
 - Swapped branch from master to failsafe
+- Added stash feature
 
