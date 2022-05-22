@@ -65,8 +65,20 @@
                 </div>
                 <div class="checkout-info">
                     <label class="checkbox-field">
-                        <input class="frm-input " name="have-code" id="have-code" value="" type="checkbox"><span>I have promo code</span>
+                        <input class="frm-input " name="have-code" id="have-code" value="1" type="checkbox" wire:model="haveCouponCode"><span>I have coupon code</span>
                     </label>
+                    @if(!$haveCouponCode != 1)
+                    <div class="summary-item">
+                        <form action="">
+                            <h4 class="title-box">Coupon Code</h4>
+                            <p class="row-in-form">
+                                <label for="coupon-code">Enter Coupon Code:</label>
+                                <input type="text" name="coupon code" wire:model="couponCode">
+                            </p>
+                            <button type="submit" class="btn btn-small">Apply Code</button>
+                        </form>
+                    </div>
+                    @endif
                     <a class="btn btn-checkout" href="checkout.html">Check out</a>
                     <a class="link-to-shop" href="shop.html">Continue Shopping<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
                 </div>
@@ -77,17 +89,17 @@
             </div>
 
             <div class="wrap-iten-in-cart">
-                <h3 class="title-box" style="border-bottom: 1px solid; padding-bottom: 15px;">You have {{Cart::instance('saveForLater')->count()}} item(s) Stashed!</h3>
+                <h3 class="title-box" style="border-bottom: 1px solid; padding-bottom: 15px;">You have {{Cart::instance('saveForStash')->count()}} item(s) Stashed!</h3>
                 @if(Session::has('s_success_message'))
                 <div class="alert alert-success">
                     <strong>Success!</strong>
                     {{ Session::get('s_success_message') }}
                 </div>
                 @endif
-                @if(Cart::instance('saveForLater')->count() > 0)
+                @if(Cart::instance('saveForStash')->count() > 0)
                 <h3 class="box-title">Products Name</h3>
                 <ul class="products-cart">
-                    @foreach (Cart::instance('saveForLater')->content() as $item)
+                    @foreach (Cart::instance('saveForStash')->content() as $item)
                     <li class="pr-cart-item">
                         <div class="product-image">
                             <figure><img src="{{ asset('assets/images/products/') }}\{{$item->model->image}}" alt="{{$item->model->name}}"></figure>
@@ -115,7 +127,7 @@
                 @endif
             </div>
 
-            <div class="wrap-show-advance-info-box style-1 box-in-site">
+            {{-- <div class="wrap-show-advance-info-box style-1 box-in-site">
                 <h3 class="title-box">Most Viewed Products</h3>
                 <div class="wrap-products">
                     <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-loop="false" data-nav="true" data-dots="false" data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"3"},"1200":{"items":"5"}}' >
@@ -263,7 +275,7 @@
                         </div>
                     </div>
                 </div><!--End wrap-products-->
-            </div>
+            </div> --}}
 
         </div><!--end main content area-->
     </div><!--end container-->
