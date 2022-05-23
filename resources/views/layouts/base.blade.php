@@ -76,6 +76,9 @@
 														<a title="Coupons" href="{{route('admin.coupons')}}">Coupons</a>
 													</li>
 													<li class="menu-item">
+														<a title="Orders" href="{{route('admin.orders')}}">Orders</a>
+													</li>
+													<li class="menu-item">
 														<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 													</li>
 													<form id="logout-form" method="POST" action="{{ route('logout') }}">
@@ -121,13 +124,6 @@
 						<div class="wrap-icon right-section">
 							@livewire('wishlist-count-component')
 							@livewire('cart-count-component')
-							<div class="wrap-icon-section show-up-after-1024">
-								<a href="/cart" class="mobile-navigation">
-									<span></span>
-									<span></span>
-									<span></span>
-								</a>
-							</div>
 						</div>
 
 					</div>
