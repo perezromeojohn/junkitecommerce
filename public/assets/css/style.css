@@ -281,7 +281,7 @@ input,textarea{
     line-height: 50px;
     color: #666;
 }
-@media (max-width: 1024px) {
+@media (min-width: 1024px) {
     .mercado-clone-wrap.open{
         left:0;
     }
@@ -6318,7 +6318,7 @@ background-color: #888888;
     }
 }
 
-@media (max-width: 1024px){
+@media (min-width: 1024px){
     .sticky-wrapper{
         height: 0 !important;
     }
@@ -6338,6 +6338,9 @@ background-color: #888888;
 	    text-align: center;
 	    margin-top: 25px;
 	    margin-bottom: 25px;
+	}
+	.header .main-info-area .left-section.wrap-logo-top img{
+		width: 55%;
 	}
 	.header .main-info-area .center-section{
 		width: 100%;
@@ -6378,10 +6381,10 @@ background-color: #888888;
     }
     .header-nav-section,
     .primary-nav-section{
-        display: none;
+        /* display: none; */
     }
     .nav-section{
-        display: none;
+        /* display: none; */
     }
     .header-toggle + .main-site .slide-banners.slide-banner-first{
         padding-top: 30px ;
