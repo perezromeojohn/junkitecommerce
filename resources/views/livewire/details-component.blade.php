@@ -22,7 +22,7 @@
             <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
                 <div class="wrap-product-detail">
                     <div class="detail-media">
-                        <div class="product-gallery">
+                        <div class="product">
                           <ul class="slides">
 
                             <li data-thumb="{{ asset('assets/images/products') }}/{{$product->image}}">
@@ -33,20 +33,9 @@
                         </div>
                     </div>
                     <div class="detail-info">
-                        <div class="product-rating">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <a href="#" class="count-review">(05 review)</a>
-                        </div>
                         <h2 class="product-name">{{$product->name}}</h2>
                         <div class="short-desc">
                             {{$product->short_description}}
-                        </div>
-                        <div class="wrap-social">
-                            <a class="link-socail" href="#"><img src="{{ asset('assets/images/social-list.png') }}" alt=""></a>
                         </div>
                         @if($product->sale_price > 0 && $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
                             <div class="wrap-price"><span class="product-price">₱ {{$product->sale_price}}</span></div>
@@ -72,10 +61,6 @@
                             @else
                             <a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">Add to Cart</a>
                             @endif
-                            <div class="wrap-btn">
-                                <a href="#" class="btn btn-compare">Add Compare</a>
-                                <a href="#" class="btn btn-wishlist">Add Wishlist</a>
-                            </div>
                         </div>
                     </div>
                     <div class="advance-info">
@@ -145,8 +130,8 @@
                                         </a>
                                     </div>
                                     <div class="product-info">
-                                        <a href="{{route('product.details',['slug'=>$p_product->slug])}}" title="{{$p_product->name}}" class="product-name"><span>₱ {{$p_product->name}}</span></a>
-                                        <div class="wrap-price"><span class="product-price">{{$p_product->regular_price}}</span></div>
+                                        <a href="{{route('product.details',['slug'=>$p_product->slug])}}" title="{{$p_product->name}}" class="product-name"><span>{{$p_product->name}}</span></a>
+                                        <div class="wrap-price"><span class="product-price">₱ {{$p_product->regular_price}}</span></div>
                                     </div>
                                 </div>
                             </li>

@@ -66,7 +66,13 @@
                         @endforeach
                     </ul>
                     @else
-                        <h1>No Item in Wishlist</h1>
+                        <div class="banner-shop">
+                            <center>
+                                <img style="margin-top: 40px" src="{{ asset('assets/images/empty.png') }}" alt="">
+                                <h4>Your Wishlist is empty</h4>
+                                <a href="/shop" class="btn btn-primary" style="background: #36a57c; border: 1px solid #36a57c;">Shop Now!</a>
+                            </center>
+                        </div>
                     @endif
         
                 </div>

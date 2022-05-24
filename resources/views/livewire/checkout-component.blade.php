@@ -9,6 +9,11 @@
             </ul>
         </div>
         <div class=" main-content-area">
+            <div class="wrap-top-banner">
+                <div class="link-banner">
+                    <figure><img src="{{ asset('assets/images/checkout1.jpg') }}" width="1170" height="240" alt=""></figure>
+                </div>
+            </div>
             <form wire:submit.prevent="placeOrder">
             <div class="row">
                 <div class="col-md-12">
@@ -26,7 +31,7 @@
                                 @error('lastname') <span class="error">{{ $message }}</span> @enderror
                             </p>
                             <p class="row-in-form">
-                                <label for="email">Email Addreess:</label>
+                                <label for="email">Email Address:</label>
                                 <input  type="email" name="email" value="" placeholder="Type your email" wire:model="email">
                                 @error('email') <span class="error">{{ $message }}</span> @enderror
                             </p>
@@ -36,12 +41,12 @@
                                 @error('mobile') <span class="error">{{ $message }}</span> @enderror
                             </p>
                             <p class="row-in-form">
-                                <label for="add">Line 1:</label>
+                                <label for="add">Address 1:</label>
                                 <input  type="text" name="add" value="" placeholder="Enter line 1" wire:model="line1">
                                 @error('line1') <span class="error">{{ $message }}</span> @enderror
                             </p>
                             <p class="row-in-form">
-                                <label for="add">Line :</label>
+                                <label for="add">Address 2:</label>
                                 <input  type="text" name="add" value="" placeholder="Enter line 2" wire:model="line2">
                                 @error('line2') <span class="error">{{ $message }}</span> @enderror
                             </p>
@@ -65,12 +70,12 @@
                                 <input  type="text" name="city" value="" placeholder="City name" wire:model="city">
                                 @error('city') <span class="error">{{ $message }}</span> @enderror
                             </p>
-                            <p class="row-in-form fill-wife">
+                            {{-- <p class="row-in-form fill-wife">
                                 <label class="checkbox-field">
                                     <input name="different-add" id="different-add" wire:model="ship_to_different" value="1" type="checkbox">
                                     <span>Ship to a different address?</span>
                                 </label>
-                            </p>
+                            </p> --}}
                         </div>
                     </div>
                 </div>
@@ -112,7 +117,7 @@
                             </p>
                             <p class="row-in-form">
                                 <label for="country">Country<span>*</span></label>
-                                <input  type="text" name="country" value="" placeholder="United States" wire:model="s_country">
+                                <input  type="text" name="country" value="" placeholder="Philippines" wire:model="s_country">
                                 @error('s_country') <span class="error">{{ $message }}</span> @enderror
                             </p>
                             <p class="row-in-form">
@@ -135,41 +140,49 @@
                 @endif
 
             </div>
-            <div class="summary summary-checkout">
-                <div class="summary-item payment-method">
-                    <h4 class="title-box">Payment Method</h4>
-                    <p class="summary-info"><span class="title">Check / Money order</span></p>
-                    <p class="summary-info"><span class="title">Credit Cart (saved)</span></p>
-                    <div class="choose-payment-methods">
-                        <label class="payment-method">
-                            <input name="payment-method" id="payment-method-bank" value="cod" type="radio" wire:model="payment_method">
-                            <span>Cash on Delivery</span>
-                            <span class="payment-desc">Order Now Pay on Delivery</span>
-                        </label>
-                        <label class="payment-method">
-                            <input name="payment-method" id="payment-method-visa" value="card" type="radio" wire:model="payment_method">
-                            <span>Debit / Credit Card </span>
-                            <span class="payment-desc">Card!!</span>
-                        </label>
-                        <label class="payment-method">
-                            <input name="payment-method" id="payment-method-paypal" value="paypal" type="radio" wire:model="payment_method">
-                            <span>Paypal</span>
-                            <span class="payment-desc">You can pay with your credit</span>
-                            <span class="payment-desc">card if you don't have a paypal account</span>
-                        </label>
-                        @error ('payment_method') <span class="error">{{ $message }}</span> @enderror
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="summary summary-checkout">
+                        <div class="summary-item payment-method">
+                            <h4 class="title-box">Payment Method</h4>
+                            <p>We only have COD for now!</p>
+                            <div class="choose-payment-methods">
+                                <label class="payment-method">
+                                    <input name="payment-method" id="payment-method-bank" value="cod" type="radio" wire:model="payment_method">
+                                    <span>Cash on Delivery</span>
+                                    <span class="payment-desc">Order Now Pay on Delivery</span>
+                                </label>
+                                {{-- <label class="payment-method">
+                                    <input name="payment-method" id="payment-method-visa" value="card" type="radio" wire:model="payment_method">
+                                    <span>Debit / Credit Card </span>
+                                    <span class="payment-desc">Card!!</span>
+                                </label>
+                                <label class="payment-method">
+                                    <input name="payment-method" id="payment-method-paypal" value="paypal" type="radio" wire:model="payment_method">
+                                    <span>Paypal</span>
+                                    <span class="payment-desc">You can pay with your credit</span>
+                                    <span class="payment-desc">card if you don't have a paypal account</span>
+                                </label> --}}
+                                @error ('payment_method') <span class="error">{{ $message }}</span> @enderror
+                            </div>
+                            @if(Session::has('checkout'))
+                                <p class="summary-info grand-total"><span>Grand Total</span> <span class="grand-total-price">₱{{Session::get('checkout')['total']}}</span></p>
+                            @endif
+                            <button type="submit" class="btn btn-medium">Place order now</button>
+                        </div>
                     </div>
-                    @if(Session::has('checkout'))
-                        <p class="summary-info grand-total"><span>Grand Total</span> <span class="grand-total-price">${{Session::get('checkout')['total']}}</span></p>
-                    @endif
-                    <button type="submit" class="btn btn-medium">Place order now</button>
                 </div>
-                <div class="summary-item shipping-method">
-                    <h4 class="title-box f-title">Shipping method</h4>
-                    <p class="summary-info"><span class="title">Flat Rate</span></p>
-                    <p class="summary-info"><span class="title">Fixed $0</span></p>
+                <div class="col-md-6">
+                        <center>
+                            <div class="banner-item" style="margin-top: 12px">
+                                <a href="#" class="link-banner banner-effect-2">
+                                    <figure><img src="{{ asset('assets/images/checkout2.jpg') }}"></figure>
+                                </a>
+                            </div>
+                        </center>
                 </div>
             </div>
+            
         </form>
 
         </div><!--end main content area-->

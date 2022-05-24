@@ -1,11 +1,45 @@
 <div>
     <div class="container" style="padding: 30px 0;">
         <div class="row">
-            <div class="col-md-6">
-                Order Details
-            </div>
-            <div class="col-md-6">
-               <a href="{{route('user.orders')}}" class="btn btn-success pull-right">My Orders</a>
+            <div class="col-md-12">
+                @if(Session::has('order_message'))
+                    <div class="alert alert-success">
+                        {{ Session::get('order_message') }}
+                    </div>
+                @endif
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-6">
+                                Order Details
+                            </div>
+                            <div class="col-md-6">
+                                <a href="{{route('user.orders')}}" class="btn btn-success pull-right">My Orders</a>
+                                @if($order->status == 'ordered')
+                                    <a href="#" wire:click.prevent="cancelOrder" style="margin-right: 10px;" class="btn btn-warning pull-right">Cancel Order</a>
+                                @endif
+                        </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <h3 class="box-title">Status</h3>
+                        <table class="table">
+                            <th>Order ID</th>
+                            <td>{{$order->id}}</td>
+                            <th>Order Date</th>
+                            <td>{{$order->created_at}}</td>
+                            <th>Order Status</th>
+                            <td>{{$order->status}}</td>
+                            @if($order->status == 'delivered')
+                                <th>Delivery Date</th>
+                                <td>{{$order->delivered_date}}</td>
+                            @elseif($order->status == 'cancelled')
+                                <th>Cancel Date</th>
+                                <td>{{$order->canceled_date}}</td>
+                            @endif
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">

@@ -628,7 +628,7 @@ header.fill-color .main-info-area .right-section .wrap-icon-section.minicart .in
     font-size: 12px;
     line-height: 12px;
     display: block;
-    background: #888;
+    background: #ff5a00;
     padding: 1.5px 7px;
     border-radius: 2px;
 }
@@ -1931,7 +1931,7 @@ li.menu-item .nav-label.sale-label::before{
 }
 .wrap-footer-content .wrap-function-info .fc-info-item{
     display: inline-block;
-    width: 25%;
+    width: 33%;
     border-right: 1px solid;
     text-align: center;
     padding: 33.5px 5px;
@@ -2204,7 +2204,6 @@ li.menu-item .nav-label.sale-label::before{
 }
 .coppy-right-box {
     background: #36a57c;
-    margin-top: 50px
 }
 .coppy-right-box .coppy-right-item{
     display: inline-block;
@@ -6443,7 +6442,7 @@ background-color: #888888;
         text-align: left;
     }
     .wrap-footer-content .wrap-function-info .fc-info-item{
-        width: 50%;
+        width: 100%;
     }
     .wrap-footer-content .wrap-function-info .fc-info-item:nth-child(2n+1){
         border-left: 1px solid;

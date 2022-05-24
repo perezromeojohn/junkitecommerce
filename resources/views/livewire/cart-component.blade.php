@@ -10,6 +10,11 @@
         </div>
         <div class=" main-content-area">
             @if(Cart::instance('cart')->count() > 0)
+            <div class="wrap-top-banner">
+                    <div class="link-banner">
+                        <figure><img src="{{ asset('assets/images/cart.jpg') }}" width="1170" height="240" alt=""></figure>
+                    </div>
+                </div>
             <div class="wrap-iten-in-cart">
                 @if(Session::has('success_message'))
                 <div class="alert alert-success">
@@ -65,13 +70,13 @@
                         <p class="summary-info"><span class="title">Tax ({{config('cart.tax')}})</span><b class="index">₱{{$taxAfterDiscount}}</b></p>
                         <p class="summary-info total-info "><span class="title">Total</span><b class="index">₱{{$totalAfterDiscount}}</b></p>
                     @else
-                        <p class="summary-info"><span class="title">Tax</span><b class="index">{{Cart::instance('cart')->tax()}}</b></p>
+                        <p class="summary-info"><span class="title">Tax</span><b class="index">₱{{Cart::instance('cart')->tax()}}</b></p>
                         <p class="summary-info"><span class="title">Shipping</span><b class="index">Free Shipping</b></p>
-                        <p class="summary-info total-info "><span class="title">Total</span><b class="index">{{Cart::instance('cart')->total()}}</b></p>
+                        <p class="summary-info total-info "><span class="title">Total</span><b class="index">₱{{Cart::instance('cart')->total()}}</b></p>
                     @endif
                 </div>
                 <div class="checkout-info">
-                    @if(!Session::has('coupon'))
+                    {{-- @if(!Session::has('coupon'))
                     <label class="checkbox-field">
                         <input class="frm-input " name="have-code" id="have-code" value="1" type="checkbox" wire:model="haveCouponCode"><span>I have coupon code</span>
                     </label>
@@ -92,23 +97,24 @@
                         </form>
                     </div>
                     @endif
-                @endif
+                @endif --}}
                     <a class="btn btn-checkout" href="#" wire:click.prevent="checkout">Check out</a> 
-                    <a class="link-to-shop" href="shop.html">Continue Shopping<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+                    <a class="link-to-shop" href="/shop">Continue Shopping<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
                 </div>
-                <div class="update-clear">
+                {{-- <div class="update-clear">
                     <a class="btn btn-clear" href="#" wire:click.prevent="deleteAll()">Clear Shopping Cart</a>
                     <a class="btn btn-update" href="#">Update Shopping Cart</a>
-                </div>
+                </div> --}}
             </div>
             @else
-            <div class="alert alert-danger">
-                <strong>No Items in Cart!</strong>
-                <a href="/shop">Go Back to Shop</a>
+            <div class="wrap-top-banner">
+                <a href="/cart" class="link-banner banner-effect-2">
+                    <figure><img src="{{ asset('assets/images/no-items.jpg') }}" width="1170" height="240" alt=""></figure>
+                </a>
             </div>
             @endif
 
-            <div class="wrap-iten-in-cart">
+            {{-- <div class="wrap-iten-in-cart">
                 <h3 class="title-box" style="border-bottom: 1px solid; padding-bottom: 15px;">You have {{Cart::instance('saveForStash')->count()}} item(s) Stashed!</h3>
                 @if(Session::has('s_success_message'))
                 <div class="alert alert-success">
@@ -145,7 +151,7 @@
                     <strong>No Items in Stash</strong>
                 </div>
                 @endif
-            </div>
+            </div> --}}
 
             {{-- <div class="wrap-show-advance-info-box style-1 box-in-site">
                 <h3 class="title-box">Most Viewed Products</h3>
