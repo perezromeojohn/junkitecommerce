@@ -54,7 +54,7 @@
 									@auth
 										@if(Auth::user()->utype === 'ADM')
 											<li class="menu-item menu-item-has-children parent" >
-												<a title="MyAccount" id="MyAccount" href="#">My Account ({{Auth::user()->name}})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+												<a title="MyAccount" id="MyAccount" href="#">Administrator ({{Auth::user()->name}})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 												<ul class="submenu curency" >
 													<li class="menu-item" >
 														<a title="Admin Dashboard" href="{{ route('admin.dashboard') }}">Dashboard</a>
@@ -96,6 +96,9 @@
 														<a title="User Dashboard" href="{{ route('user.dashboard') }}">Dashboard</a>
 													</li>
 													<li class="menu-item" >
+														<a title="My Products" href="{{ route('user.myproducts') }}">My Products</a>
+													</li>
+													<li class="menu-item" >
 														<a title="My Orders" href="{{ route('user.orders') }}">My Orders</a>
 													</li>
 													<li class="menu-item">
@@ -124,12 +127,28 @@
 							<a href="/" class="link-to-home"><img src="{{ asset('assets/images/logo-top-1.png') }}" alt="mercado"></a>
 						</div>
 
-						@livewire('header-search-component')
+						@if(Route::has('login'))
+							@auth
+								@if(Auth::user()->utype === 'USR')
+									@livewire('header-search-component')
 
-						<div class="wrap-icon right-section">
-							@livewire('wishlist-count-component')
-							@livewire('cart-count-component')
-						</div>
+									<div class="wrap-icon right-section">
+										@livewire('wishlist-count-component')
+										@livewire('cart-count-component')
+									</div>
+								@else
+								<br>	
+								@endif
+
+							@else
+								@livewire('header-search-component')
+
+								<div class="wrap-icon right-section">
+									@livewire('wishlist-count-component')
+									@livewire('cart-count-component')
+								</div>
+							@endif
+						@endif
 
 					</div>
 				</div>
@@ -137,22 +156,53 @@
 					<div class="primary-nav-section">
 						<div class="container">
 							<ul class="nav primary clone-main-menu" id="mercado_main" data-menuname="Main menu" >
-								<li class="menu-item">
-									<a href="about-us.html" class="link-term mercado-item-title">Home</a>
-								</li>
-								<li class="menu-item">
-									<a href="about-us.html" class="link-term mercado-item-title">About Us</a>
-								</li>
-								<li class="menu-item">
-									<a href="/shop" class="link-term mercado-item-title">Shop</a>
-								</li>
-								<li class="menu-item">
-									<a href="/cart" class="link-term mercado-item-title">Cart</a>
-								</li>
-								<li class="menu-item">
-									<a href="/checkout" class="link-term mercado-item-title">Checkout</a>
-								</li>
-+
+								@if(Route::has('login'))
+									@auth
+										@if(Auth::user()->utype === 'USR')
+											<li class="menu-item">
+												<a href="/" class="link-term mercado-item-title">Home</a>
+											</li>
+											<li class="menu-item">
+												<a href="/shop" class="link-term mercado-item-title">Shop</a>
+											</li>
+											<li class="menu-item">
+												<a href="/cart" class="link-term mercado-item-title">Cart</a>
+											</li>
+											<li class="menu-item">
+												<a href="/checkout" class="link-term mercado-item-title">Checkout</a>
+											</li>
+											<li class="menu-item">
+												<a href="about-us.html" class="link-term mercado-item-title">About Us</a>
+											</li>
+										@elseif(Auth::user()->utype === 'ADM')
+											<li class="menu-item">
+												<a href="/" class="link-term mercado-item-title">Home</a>
+											</li>
+											<li class="menu-item">
+												<a href="/shop" class="link-term mercado-item-title">Shop</a>
+											</li>
+											<li class="menu-item">
+												<a href="/dashboard" class="link-term mercado-item-title">Dashboard</a>
+											</li>
+										@endif
+									@else
+										<li class="menu-item">
+											<a href="/" class="link-term mercado-item-title">Home</a>
+										</li>
+										<li class="menu-item">
+											<a href="/shop" class="link-term mercado-item-title">Shop</a>
+										</li>
+										<li class="menu-item">
+											<a href="/cart" class="link-term mercado-item-title">Cart</a>
+										</li>
+										<li class="menu-item">
+											<a href="/checkout" class="link-term mercado-item-title">Checkout</a>
+										</li>
+										<li class="menu-item">
+											<a href="about-us.html" class="link-term mercado-item-title">About Us</a>
+										</li>
+									@endif
+								@endif
 							</ul>
 						</div>
 					</div>
@@ -298,28 +348,60 @@
 				</div>
 			</div>
 
-			<div class="coppy-right-box">
-				<div class="container">
-					<div class="container">
-						<div class="container-fluid" id="sect3">
-							<div class="row">
-								<div class="col-lg-4" id="leftsection">
-									<img src="{{ asset('assets/images/mechanisms.gif') }}" id="contactmecha" draggable="false" class="img-responsive center-block d-block mx-auto" alt="MOTIVATE!!!!">
-								</div>
-								<div class="col-sm-8" id="rightsection" style="color:#fff">
-									<h1><b>Contact Us</b></h1>
-									<p>Report Account Problems: 201911621@gordoncollege.edu.ph</p>
-									<p>Report a Bug : report a bug guild or girhub</p>
-									<p>General Questions about the Site : 201911621@gordoncollege.edu.ph</p>
-									<h6>if Rumyooo aint available</h6>
-									<h6>call Larry the Lobster for more Info</h6>
+			@if(Route::has('login'))
+				@auth
+					@if(Auth::user()->utype === 'USR')
+					<div class="coppy-right-box">
+						<div class="container">
+							<div class="container">
+								<div class="container-fluid" id="sect3">
+									<div class="row">
+										<div class="col-lg-4" id="leftsection">
+											<img src="{{ asset('assets/images/mechanisms.gif') }}" id="contactmecha" draggable="false" class="img-responsive center-block d-block mx-auto" alt="MOTIVATE!!!!">
+										</div>
+										<div class="col-sm-8" id="rightsection" style="color:#fff">
+											<h1><b>Contact Us</b></h1>
+											<p>Report Account Problems: 201911621@gordoncollege.edu.ph</p>
+											<p>Report a Bug : report a bug guild or girhub</p>
+											<p>General Questions about the Site : 201911621@gordoncollege.edu.ph</p>
+											<h6>if Rumyooo aint available</h6>
+											<h6>call Larry the Lobster for more Info</h6>
+										</div>
+									</div>
 								</div>
 							</div>
+							<div class="clearfix"></div>
 						</div>
 					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
+					@else
+					<br>
+					@endif
+				@else
+					<div class="coppy-right-box">
+						<div class="container">
+							<div class="container">
+								<div class="container-fluid" id="sect3">
+									<div class="row">
+										<div class="col-lg-4" id="leftsection">
+											<img src="{{ asset('assets/images/mechanisms.gif') }}" id="contactmecha" draggable="false" class="img-responsive center-block d-block mx-auto" alt="MOTIVATE!!!!">
+										</div>
+										<div class="col-sm-8" id="rightsection" style="color:#fff">
+											<h1><b>Contact Us</b></h1>
+											<p>Report Account Problems: 201911621@gordoncollege.edu.ph</p>
+											<p>Report a Bug : report a bug guild or girhub</p>
+											<p>General Questions about the Site : 201911621@gordoncollege.edu.ph</p>
+											<h6>if Rumyooo aint available</h6>
+											<h6>call Larry the Lobster for more Info</h6>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				@endif
+			@endif
+
 		</div>
 	</footer>
 	

@@ -26,9 +26,12 @@ use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\SearchComponent;
 use App\Http\Livewire\ShopComponent;
 use App\Http\Livewire\ThankYouComponent;
+use App\Http\Livewire\User\UserAddProductComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
+use App\Http\Livewire\User\UserEditProductComponent;
 use App\Http\Livewire\User\UserOrderDetailsComponent;
 use App\Http\Livewire\User\UserOrdersComponent;
+use App\Http\Livewire\User\UserPostProductComponent;
 use App\Http\Livewire\WishListComponent;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
@@ -81,6 +84,9 @@ Route::get('/thank-you', ThankYouComponent::class)->name('thankyou');
 Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     Route::get('/user/dashboard', UserDashboardComponent::class)->name('user.dashboard');
     Route::get('/user/orders', UserOrdersComponent::class)->name('user.orders');
+    Route::get('/user/myproducts', UserPostProductComponent::class)->name('user.myproducts');
+    Route::get('/user/add-product', UserAddProductComponent::class)->name('user.addproduct');
+    Route::get('/user/product/edit/{product_slug}', UserEditProductComponent::class)->name('user.editproduct');
     Route::get('/user/orders/{order_id}', UserOrderDetailsComponent::class)->name('user.orderdetails');
 });
 
