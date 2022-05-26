@@ -44,7 +44,11 @@
                             <div class="wrap-price"><span class="product-price">₱ {{$product->regular_price}}</span></div>
                         @endif
                         <div class="stock-info in-stock">
-                            <p class="availability">Availability: <b>{{$product->stock_status}}</b></p>
+                            @if($product->stock_status == 'instock')
+                            <p class="availability">Availability: <b>Instock</b></p>
+                            @else
+                            <p class="availability">Availability: <b>Out of Stock</b></p>
+                            @endif
                         </div>
                         <div class="quantity">
                             <span>Quantity:</span>
@@ -86,30 +90,30 @@
                                     <i class="fa fa-truck" aria-hidden="true"></i>
                                     <div class="right-content">
                                         <b class="title">Free Shipping</b>
-                                        <span class="subtitle">On Oder Over $99</span>
-                                        <p class="desc">Lorem Ipsum is simply dummy text of the printing...</p>
+                                        <span class="subtitle">Yepp Free Shipping</span>
+                                        <p class="desc">free shipping free shippuing omg</p>
                                     </div>
                                 </a>
                             </li>
 
                             <li class="service">
                                 <a class="link-to-service" href="#">
-                                    <i class="fa fa-gift" aria-hidden="true"></i>
+                                    <i class="fa fa-tree" aria-hidden="true"></i>
                                     <div class="right-content">
-                                        <b class="title">Special Offer</b>
-                                        <span class="subtitle">Get a gift!</span>
-                                        <p class="desc">Lorem Ipsum is simply dummy text of the printing...</p>
+                                        <b class="title">Help The Environent</b>
+                                        <span class="subtitle">Trees more Trees</span>
+                                        <p class="desc">Trees Trees Trees Trees</p>
                                     </div>
                                 </a>
                             </li>
 
                             <li class="service">
                                 <a class="link-to-service" href="#">
-                                    <i class="fa fa-reply" aria-hidden="true"></i>
+                                    <i class="fa fa-dropbox" aria-hidden="true"></i>
                                     <div class="right-content">
                                         <b class="title">Order Return</b>
                                         <span class="subtitle">Return within 7 days</span>
-                                        <p class="desc">Lorem Ipsum is simply dummy text of the printing...</p>
+                                        <p class="desc">Return it man</p>
                                     </div>
                                 </a>
                             </li>

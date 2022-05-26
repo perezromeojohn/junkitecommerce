@@ -11,7 +11,7 @@
         <div class=" main-content-area">
             @if(Cart::instance('cart')->count() > 0)
             <div class="wrap-top-banner">
-                    <div class="link-banner">
+                    <div class="link-banner" style="margin-bottom: 30px">
                         <figure><img src="{{ asset('assets/images/cart.jpg') }}" width="1170" height="240" alt=""></figure>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                                 <a class="btn btn-increase" href="#" wire:click.prevent="increaseQuantity('{{$item->rowId}}')"></a>
                                 <a class="btn btn-reduce" href="#"  wire:click.prevent="decreaseQuantity('{{$item->rowId}}')"></a>
                             </div>
-                            <p class="text-center"><a href="#" wire:click.prevent="switchToStashForLater('{{$item->rowId}}')">Move to Stash</a></p>
+                            {{-- <p class="text-center"><a href="#" wire:click.prevent="switchToStashForLater('{{$item->rowId}}')">Move to Stash</a></p> --}}
                         </div>
                         <div class="price-field sub-total"><p class="price">₱ {{$item->subtotal}}</p></div>
                         <div class="delete">

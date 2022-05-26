@@ -19,6 +19,9 @@ class AdminOrderComponent extends Component
         }
         $order->save();
         session()->flash('order_message', 'Order status updated successfully');
+        
+
+
     }
 
     public function render()

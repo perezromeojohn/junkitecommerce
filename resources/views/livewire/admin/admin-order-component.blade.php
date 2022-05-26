@@ -60,6 +60,8 @@
                                                 <span class="caret"></span></button>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="#" wire:click.prevent="updateOrderStatus({{$order->id}}, 'delivered')">Delivered</a></li>
+                                                    <li><a href="#" wire:click.prevent="updateOrderStatus({{$order->id}}, 'shipped')">Shipped</a></li>
+                                                    <li><a href="#" wire:click.prevent="updateOrderStatus({{$order->id}}, 'processing')">Processing</a></li>
                                                     <li><a href="#" wire:click.prevent="updateOrderStatus({{$order->id}}, 'cancelled')">Cancelled</a></li>
                                                 </ul>
                                             </div>

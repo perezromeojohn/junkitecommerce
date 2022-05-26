@@ -71,15 +71,22 @@
 				</ul>
 			</div>
 			<div class="row">
-				<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12 col-md-offset-3">							
+				<div class="col-lg-4 col-sm-4 col-md-4 col-xs-12 col-md-offset-4">							
 					<div class=" main-content-area">
 						<div class="wrap-login-item ">
 							<div class="register-form form-item ">
                                 <x-jet-validation-errors class="mb-4" />
 								<form class="form-stl" action="{{ route('register') }}" name="frm-login" method="POST" >
                                     @csrf
+                                    <style>
+                                        b {
+                                            color: #359d76;
+                                        }
+                                    </style>
 									<fieldset class="wrap-title">
-										<h3 class="form-title">Create an account</h3>
+										<center>
+                                            <h2 class="form-title"><b>Create an account</b></h2>
+                                        </center>
 										<h4 class="form-subtitle">Personal infomation</h4>
 									</fieldset>									
 									<fieldset class="wrap-input">
@@ -91,7 +98,7 @@
 										<input type="email" id="frm-reg-email" name="email" placeholder="Email address" :value="email">
 									</fieldset>
 									<fieldset class="wrap-title">
-										<h3 class="form-title">Login Information</h3>
+										<h4 class="form-subtitle">Login Information</h4>
 									</fieldset>
 									<fieldset class="wrap-input item-width-in-half left-item ">
 										<label for="frm-reg-pass">Password *</label>

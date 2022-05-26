@@ -6,7 +6,7 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-6">
-                                Order Details
+                                <h4>Order Details</h3>
                             </div>
                             <div class="col-md-6">
                                 <a href="{{route('admin.orders')}}" class="btn btn-success pull-right">All Orders</a>
@@ -15,25 +15,33 @@
                     </div>
                     <div class="panel-body">
                         <table class="table">
-                            <tr>
-                                <th>Order Id</th>  
-                                <td>{{ $order->id }}</td>
-                                <th>Order Date</th>  
-                                <td>{{ $order->created_at }}</td>
-                                <th>Order Status</th>  
-                                <td>{{ $order->status }}</td>
-                                @if ($order->status == 'delivered')
-                                    <th>Delivery Date</th>  
-                                    <td>{{ $order->delivered_date }}</td>
-                                @else if($order->status == 'cancelled')
-                                    <th>Cancellation Date</th>  
-                                    <td>{{ $order->cancelled_date }}</td>
-                                @endif
-                            </tr>
+                            <th>Order ID</th>
+                            <td>{{$order->id}}</td>
+                            <th>Order Date</th>
+                            <td>{{$order->created_at}}</td>
+                            <th>Order Status</th>
+                            @if($order->status == 'ordered')
+                                <td><span style="class="badge badge-secondary">{{$order->status}}</span></td>
+                            @elseif ($order->status == 'processing')
+                                <td><span style="background-color: blue" class="badge badge-secondary">{{$order->status}}</span></td>
+                            @elseif($order->status == 'shipped')
+                                <td><span style="background-color: orange" class="badge badge-secondary">{{$order->status}}</span></td>
+                            @elseif($order->status == 'delivered')
+                                <td><span style="background-color: green" class="badge badge-secondary">{{$order->status}}</span></td>
+                            @elseif($order->status == 'cancelled')
+                                <td><span class="badge badge-secondary">{{$order->status}}</span></td>
+                            @endif
+                            @if($order->status == 'delivered')
+                                <th>Delivery Date</th>
+                                <td>{{$order->delivered_date}}</td>
+                            @elseif($order->status == 'cancelled')
+                                <th>Cancel Date</th>
+                                <td>{{$order->canceled_date}}</td>
+                            @endif
                         </table>
                     </div>
                 </div>
-            </div>
+           
         </div>
         {{-- <div class="row">
             <div class="col-md-6">
@@ -43,8 +51,7 @@
                <a href="{{route('admin.orders')}}" class="btn btn-success pull-right">All Orders</a>
             </div>
         </div> --}}
-        <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Ordered Items
@@ -63,7 +70,7 @@
                                     </div>
                                     <div class="price-field produtc-price"><p class="price">₱ {{$item->price}}</p></div>
                                     <div class="quantity">
-                                       <h5>{{$item->quantity}}</h5>
+                                        <div class="price-field produtc-price"><p class="price">Quantity: {{$item->quantity}}</p></div>
                                     </div>
                                     <div class="price-field sub-total"><p class="price">₱ {{$item->price * $item->quantity}}</p></div>
                                 </li>
@@ -73,17 +80,17 @@
                         <div class="summary">
                             <div class="order-summary">
                                 <h4 class="title-box">Order Summary</h4>
-                                <p class="summary-info"><span class="title">Subtotal</span><b class="index">{{$order->subtotal}}</b></p>
-                                <p class="summary-info"><span class="title">Tax</span><b class="index">{{$order->tax}}</b></p>
+                                <p class="summary-info"><span class="title">Subtotal</span><b class="index">₱{{$order->subtotal}}</b></p>
+                                <p class="summary-info"><span class="title">Tax</span><b class="index">₱{{$order->tax}}</b></p>
                                 <p class="summary-info"><span class="title">Shipping</span><b class="index">Free Shipping</b></p>
-                                <p class="summary-info"><span class="title">Total</span><b class="index">{{$order->total}}</b></p>
+                                <p class="summary-info"><span class="title">Total</span><b class="index">₱{{$order->total}}</b></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Billing Details
@@ -109,9 +116,9 @@
                                 <td>{{$order->email}}</td>
                             </tr>
                             <tr>
-                                <th>Line 1</th>
+                                <th>Address 1</th>
                                 <td>{{$order->line1}}</td>
-                                <th>Line 2</th>
+                                <th>Address 2</th>
                                 <td>{{$order->line2}}</td>
                             </tr>
                             <tr>
@@ -130,8 +137,6 @@
                     </div>
                 </div>
             </div>
-
-        </div>
 
         @if($order->is_shipping_different)
         <div class="row">
@@ -185,7 +190,6 @@
         </div>
         @endif
 
-        <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -195,7 +199,9 @@
                         <table class="table">
                             <tr>
                                 <th>Transaction Type</th>
-                                <td>{{$order->transaction->mode}}</td>
+                                @if($order->transaction->mode == 'cod')
+                                <td><b>Cash on Delivery</b></td>
+                                @endif
                             </tr>
                             <tr>
                                 <th>Status</th>
@@ -209,7 +215,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
     </div>
+</div>
 </div>

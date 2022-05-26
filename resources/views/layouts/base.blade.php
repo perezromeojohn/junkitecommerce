@@ -172,7 +172,10 @@
 												<a href="/checkout" class="link-term mercado-item-title">Checkout</a>
 											</li>
 											<li class="menu-item">
-												<a href="about-us.html" class="link-term mercado-item-title">About Us</a>
+												<a href="{{ route('user.orders') }}" class="link-term mercado-item-title">My Orders</a>
+											</li>
+											<li class="menu-item">
+												<a href="{{ route('user.myproducts') }}" class="link-term mercado-item-title">My Products</a>
 											</li>
 										@elseif(Auth::user()->utype === 'ADM')
 											<li class="menu-item">
@@ -195,9 +198,7 @@
 										<li class="menu-item">
 											<a href="/checkout" class="link-term mercado-item-title">Checkout</a>
 										</li>
-										<li class="menu-item">
-											<a href="about-us.html" class="link-term mercado-item-title">About Us</a>
-										</li>
+										
 									@endif
 								@endif
 							</ul>
