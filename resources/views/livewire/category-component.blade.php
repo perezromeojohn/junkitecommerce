@@ -23,7 +23,7 @@
                     <div class="wrap-right">
 
                         <div class="sort-item orderby ">
-                            <select name="orderby" class="use-chosen" wire:model="sorting">
+                            <select name="orderby" class="use-chosen" style="border: 0px; padding: 10px; color: #fff; background-color: #359d76;" wire:model="sorting">
                                 <option value="default" selected="selected">Default sorting</option>
                                 <option value="date">Sort by newness</option>
                                 <option value="price">Sort by price: low to high</option>
@@ -32,7 +32,7 @@
                         </div>
 
                         <div class="sort-item product-per-page">
-                            <select name="post-per-page" class="use-chosen" wire:model="pagesize" >
+                            <select name="post-per-page" style="border: 0px; padding: 10px; color: #fff; background-color: #359d76;" class="use-chosen" wire:model="pagesize" >
                                 <option value="12" selected="selected">12 per page</option>
                                 <option value="16">16 per page</option>
                                 <option value="18">18 per page</option>
