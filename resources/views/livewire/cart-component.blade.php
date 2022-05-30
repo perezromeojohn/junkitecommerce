@@ -71,7 +71,6 @@
                         <p class="summary-info total-info "><span class="title">Total</span><b class="index">₱{{$totalAfterDiscount}}</b></p>
                     @else
                         <p class="summary-info"><span class="title">Tax</span><b class="index">₱{{Cart::instance('cart')->tax()}}</b></p>
-                        <p class="summary-info"><span class="title">Tax Percentage</span><b class="index">%20</b></p>
                         <p class="summary-info"><span class="title">Shipping</span><b class="index">Free Shipping</b></p>
                         <p class="summary-info total-info "><span class="title">Total</span><b class="index">₱{{Cart::instance('cart')->total()}}</b></p>
                     @endif
