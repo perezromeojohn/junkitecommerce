@@ -321,6 +321,9 @@
 .widget-49 .widget-49-meeting-action a {
   text-transform: uppercase;
 }
+ol {
+  list-style: none;
+}
             </style>
             <div class="py-5">
               <div class="container" style="padding: 30px 0;">
@@ -355,18 +358,17 @@
                   <div class="col-lg-4">
                     <div class="card card-margin">
                         <div class="card-header no-border">
-                            <h5 class="card-title">ORDER ID: {{$order->id}}</h5>
+                            
                         </div>
                         <div class="card-body pt-0">
                             <div class="widget-49">
                                 <div class="widget-49-title-wrapper">
                                     <div class="widget-49-date-primary">
-                                        <span class="widget-49-date-day">{{$order->id}}</span>
-                                        <span class="widget-49-date-month">ID</span>
+                                       
                                     </div>
                                     <div class="widget-49-meeting-info">
                                         <span class="widget-49-pro-title"><b>EMAIL:</b> {{$order->email}}</span>
-                                        <span class="widget-49-meeting-time">{{$order->created_at->format('d/m/y')}}</span>
+                                        <span class="widget-49-meeting-time">{{$order->created_at->format('F j Y')}}</span>
                                     </div>
                                 </div>
                                 <ol class="widget-49-meeting-points">

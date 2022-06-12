@@ -53,7 +53,7 @@
                                         <td>{{$product->sale_price}}</td>
                                         <td>{{$product->category->name}}</td>
                                         <td>{{$product->condition}}</td>
-                                        <td>{{$product->created_at}}</td>
+                                        <td>{{$product->created_at->format('F j Y')}}</td>
                                         <td>
                                             <a href="{{route('user.editproduct',['product_slug'=>$product->slug])}}"><i style="color: green;" class="fa fa-pencil fa-2x"></i></a>
                                             <a href="#" onclick="confirm('Delete the Product?') || event.stopImmediatePropagation()" wire:click.prevent="deleteProduct({{$product->id}})"><i style="margin-left: 10px;" class="fa fa-trash fa-2x text-danger"></i></a>

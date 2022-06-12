@@ -14,10 +14,10 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-6">
-                                All Product
+                                All Pending Orders
                             </div>
                             <div class="col-md-6">
-                                <a href="{{route('admin.pending')}}" class="btn btn-success pull-right">Pending Orders</a>
+                                <a href="{{route('admin.orders')}}" class="btn btn-success pull-right">All Orders</a>
                             </div>
                         </div>
                     </div>

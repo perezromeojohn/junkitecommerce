@@ -16,6 +16,7 @@ use App\Http\Livewire\Admin\AdminHomeCategoryComponent;
 use App\Http\Livewire\Admin\AdminHomeSliderComponent;
 use App\Http\Livewire\Admin\AdminOrderComponent;
 use App\Http\Livewire\Admin\AdminOrderDetailsComponent;
+use App\Http\Livewire\Admin\AdminOrderPendingComponent;
 use App\Http\Livewire\Admin\AdminProductComponent;
 use App\Http\Livewire\Admin\AdminSaleComponent;
 use App\Http\Livewire\CartComponent;
@@ -32,7 +33,9 @@ use App\Http\Livewire\User\UserEditProductComponent;
 use App\Http\Livewire\User\UserOrderDetailsComponent;
 use App\Http\Livewire\User\UserOrdersComponent;
 use App\Http\Livewire\User\UserPostProductComponent;
+use App\Http\Livewire\User\UserProducts;
 use App\Http\Livewire\WishListComponent;
+use App\Models\UserProduct;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
@@ -111,6 +114,7 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function() {
     Route::get('/admin/coupons/edit/{coupon_id}', AdminEditCouponsComponent::class)->name('admin.editcoupons');
 
     Route::get('/admin/orders', AdminOrderComponent::class)->name('admin.orders');
+    Route::get('/admin/pendingorders', AdminOrderPendingComponent::class)->name('admin.pending');
     Route::get('/admin/orders/{order_id}', AdminOrderDetailsComponent::class)->name('admin.orderdetails');
 
 });
